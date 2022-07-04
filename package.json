@@ -1,0 +1,22 @@
+{
+  "name": "life_church_portal",
+  "version": "1.0.0",
+  "description": "An application that help Life Church tracks activities for events",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boakaidorborkamara/life_church_portal.git"
+  },
+  "author": "Boakai Dorbor Kamara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boakaidorborkamara/life_church_portal/issues"
+  },
+  "homepage": "https://github.com/boakaidorborkamara/life_church_portal#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
