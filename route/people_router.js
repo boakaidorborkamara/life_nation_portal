@@ -5,6 +5,8 @@ const peopleController = require('../controller/peopleController');
 const router = express.Router();
 
 
+//display homepage
+router.get('/prayer-signup', peopleController.signup);
 
 //get all churches
 router.get('/people', peopleController.people_list);

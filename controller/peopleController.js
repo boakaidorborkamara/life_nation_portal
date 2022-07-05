@@ -3,6 +3,13 @@ const people_list = (req, res) => {
     res.send("People list not implemented")
 }
 
+// Display the form 
+// display homepage 
+const signup = (req, res) => {
+    res.render("../view/prayer-signup");
+}
+
+
 
 //Display detail page for a specific book
 const people_detail = (req, res) => {
@@ -28,6 +35,7 @@ const people_update_post = function(req, res) {
 
 
 module.exports = {
+    signup,
     people_list,
     people_detail,
     people_create_post,
