@@ -1,10 +1,15 @@
 const express = require('express');
-const { dirname } = require('path');
+const ejs = require('ejs');
+
 const path = require('path');
 
 
 // create an express app 
 const app = express();
+
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
 
 // enable usage of static file 
@@ -27,7 +32,7 @@ app.use(prayer_schedule_router);
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/view/index.html'));
+    res.render(path.join(__dirname + '/view/index'));
 });
 
 
