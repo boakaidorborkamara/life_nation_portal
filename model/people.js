@@ -1,5 +1,9 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../db-config/database');
+const PrayerSchedule = require('./prayer_schedule');
+
+//include prayer schedule table 
+const prayerSchedule = require('./prayer_schedule');
 
 const People = sequelize.define("People", {
     firstName: {
@@ -27,9 +31,14 @@ const People = sequelize.define("People", {
     tableName: "people" //customize table name
 });
 
+//create foreign key with a one to many relationship
+People.hasMany(prayerSchedule);
+prayerSchedule.belongsTo(People);
+
+
 
 //create a table from model
-Parent.sync()
+People.sync({ force: true })
     .then(() => {
         console.log("People table sucessfully created");
     })

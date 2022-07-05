@@ -1,7 +1,6 @@
 const express = require('express');
-
-// connect to database 
-// const db = require('./db-config/database');
+const { dirname } = require('path');
+const path = require('path');
 
 
 // create an express app 
@@ -12,6 +11,12 @@ const app = express();
 const PORT = process.env.port || 3000;
 app.use(express.static('public'));
 
+// connect to database 
+const db = require('./db-config/database');
+// tables 
+const people_table = require('./model/people');
+const prayer_schedule_table = require('./model/prayer_schedule');
+
 
 //ROUTES
 const people_router = require('./route/people_router');
@@ -21,11 +26,9 @@ app.use(people_router);
 app.use(prayer_schedule_router);
 
 
-// ROUTES 
-app.get("/", (req, res) => {
-    // res.send("Home Page");
-    res.render('./view/index');
-})
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/view/index.html'));
+});
 
 
 app.listen(PORT, () => {
