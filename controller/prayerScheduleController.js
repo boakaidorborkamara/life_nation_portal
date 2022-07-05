@@ -6,23 +6,23 @@ const prayer_schedule_list = (req, res) => {
 
 //Display detail page for a specific prayer schedule
 const prayer_schedule_detail = (req, res) => {
-    res.send("People detail not implemented.");
+    res.send("Prayer detail not implemented.");
 }
 
 // Handle prayer scheule create on POST
 const prayer_schedule_create_post = (req, res) => {
-    res.send("Not yet implemented People create POST")
+    res.send("Not yet implemented Prayer create POST")
 }
 
 // Handle prayer schedule delete on POST.
 const prayer_schedule_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: people delete POST');
+    res.send('NOT IMPLEMENTED: Prayer delete POST');
 };
 
 
 // Handle prayer update on POST.
 const prayer_schedule_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Book update POST');
+    res.send('NOT IMPLEMENTED: Prayer Schedule update POST');
 };
 
 

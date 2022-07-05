@@ -7,8 +7,10 @@ app.use(express.static('public'));
 
 //ROUTES
 const people_router = require('./route/people_router');
+const prayer_schedule_router = require('./route/prayer_schedule_router');
 
 app.use(people_router);
+app.use(prayer_schedule_router);
 
 // ROUTES 
 app.get("/", (req, res) => {

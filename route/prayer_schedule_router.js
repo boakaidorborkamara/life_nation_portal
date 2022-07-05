@@ -1,5 +1,5 @@
 const express = require('express');
-const peopleController = require('../controller/peopleController');
+const prayerScheduleController = require('../controller/prayerScheduleController');
 
 
 const router = express.Router();
@@ -7,13 +7,13 @@ const router = express.Router();
 
 
 //get all churches
-router.get('/people', peopleController.people_list);
+router.get('/prayer_schedule', prayerScheduleController.prayer_schedule_list);
 
 //create a new book POST
-router.post('/people/create', peopleController.people_create_post);
+router.post('/prayer_schedule/create', prayerScheduleController.prayer_schedule_create_post);
 
 //display details for a specific route
-router.get('/people/:id', peopleController.people_detail)
+router.get('/prayer_schedule/:id', prayerScheduleController.prayer_schedule_detail)
 
 
 
