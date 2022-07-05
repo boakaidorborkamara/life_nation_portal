@@ -2,6 +2,10 @@ body {
     background-color: #031120;
 }
 
+header {
+    margin-bottom: 40px;
+}
+
 main {
     margin: 0 auto;
     height: 70vh;
@@ -18,54 +22,53 @@ main {
 /* .image-card div:nth-child(1) img {
     /* display: none; */
 
-width: 100%;
-
-}
 */ #wrapper {
     /* display: none; */
-    
     width: 50vw;
     margin: 0 auto;
 }
+
 #wrapper .card {
     display: inline-block;
     margin: 0 auto;
 }
+
 footer {
     /* position: fixed; */
     /* bottom: 20px; */
     /* left: 45%; */
-    
     text-align: center;
 }
+
 .btn {
     width: 100%;
     text-align: center;
 }
 
+
 /* tablet screens  */
+
 @media (max-width:768px) {
     header {
         background-color: white;
     }
-    
     #wrapper {
         /* display: none; */
         width: 90vw;
         margin-top: 60px;
     }
-    
     #wrapper .card {
         display: block !important;
     }
 }
 
+
 /* small screens or phone  */
+
 @media (max-width:767px) {
     body {
         background-color: orange;
     }
-    
     #wrapper .card {
         display: block !important;
         width: 80vw;
