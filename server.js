@@ -1,11 +1,16 @@
 const express = require('express');
 const ejs = require('ejs');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const path = require('path');
 
 
 // create an express app 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 
 // set the view engine to ejs
@@ -17,16 +22,24 @@ const PORT = process.env.port || 3000;
 app.use(express.static('public'));
 
 
+// app.use(express.urlencoded({ extended: true }));
+
+
 // connect to database and create tables from models
 const db = require('./db-config/database');
 const people_table = require('./model/people');
 const prayer_schedule_table = require('./model/prayer_schedule');
+
+app.post('/try', (req, res) => {
+    console.log(req.body);
+})
 
 
 //ROUTES
 const homepage_router = require('./route/homepage_router')
 const people_router = require('./route/people_router');
 const prayer_schedule_router = require('./route/prayer_schedule_router');
+const { urlencoded } = require('body-parser');
 
 app.use(homepage_router);
 app.use(people_router);

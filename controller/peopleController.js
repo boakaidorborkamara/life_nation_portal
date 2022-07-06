@@ -1,3 +1,5 @@
+const { json } = require("body-parser");
+
 //Display all churches
 const people_list = (req, res) => {
     res.send("People list not implemented")
@@ -11,14 +13,18 @@ const signup = (req, res) => {
 
 
 
-//Display detail page for a specific book
+//Display detail page for a specific person
 const people_detail = (req, res) => {
     res.send("People detail not implemented.");
 }
 
-// Handle church create on POST
+// Handle person create on POST
 const people_create_post = (req, res) => {
-    res.send("Not yet implemented People create POST")
+
+    let people_detail = req.body;
+    // console.log(JSON.stringify(people_detail));
+    console.log(req);
+    res.send({ message: "Not yet implemented People create POST" });
 }
 
 // Handle church delete on POST.
