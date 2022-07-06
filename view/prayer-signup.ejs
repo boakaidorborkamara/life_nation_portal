@@ -79,10 +79,10 @@
                     <input type="text" placeholder="Facebook Handle" class="form-control" id="facebook">
                 </div>
                 <div>
-                    <select class="form-control" name="" id="available-time">
-                        <option value="Time Available To Pray" selected  disabled>Time Available To Pray</option>
-                        <option value="">Evening</option>
-                        <option value="">Morning</option>
+                    <select name="" id="available-time">
+                        <option value="Time Available To Pray" selected disabled>Time Available To Pray</option>
+                        <option value="Evening">Evening</option>
+                        <option value="Morning">Morning</option>
                     </select>
                 </div>
                 <!-- <div class="btn-group">
@@ -109,7 +109,7 @@
         let phone_number = document.getElementById('phone_number');
         let facebook = document.getElementById('facebook');
         let available_time = document.getElementById('available-time');
-        console.log(available_time);
+        console.log(available_time.value);
         // let submit_btn = document.getElementById('submit-btn');
 
 
@@ -146,24 +146,25 @@
 
         //validate frontend data
         function validateFrondendData(data) {
-            if (data.first_name === "") {
+            console.log(available_time);
+            if (data.firstName === "") {
                 first_name.style.border = "1px solid red";
                 alert("First Name field is required");
                 return 1;
-            } else if (data.last_name === "") {
+            } else if (data.lastName === "") {
                 last_name.style.border = "1px solid red";
                 alert("Last Name field is required");
                 return 1;
             } else if (data.gender === "") {
                 alert("Select a gender");
                 return 1;
-            } else if (data.available_time === "Time Available To Pray") {
+            } else if (data.availableTime == "Time Available To Pray") {
                 available_time.style.border = "1px solid red";
                 alert("Please select an Available Prayer Time");
                 return 1;
-            } else {
-                return 0;
             }
+
+            return 0;
         }
 
 
