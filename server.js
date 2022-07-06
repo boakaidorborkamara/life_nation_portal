@@ -30,9 +30,6 @@ const db = require('./db-config/database');
 const people_table = require('./model/people');
 const prayer_schedule_table = require('./model/prayer_schedule');
 
-app.post('/try', (req, res) => {
-    console.log(req.body);
-})
 
 
 //ROUTES

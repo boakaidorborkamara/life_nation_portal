@@ -1,7 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../db-config/database');
 
-const PrayerSchedule = sequelize.define("People", {
+
+const PrayerSchedule = sequelize.define("PrayerSchedule", {
     time: {
         type: DataTypes.STRING,
         allowNull: false
@@ -19,7 +20,7 @@ const PrayerSchedule = sequelize.define("People", {
 
 
 //create a table from model
-PrayerSchedule.sync()
+PrayerSchedule.sync({ force: true })
     .then(() => {
         console.log("Prayer Schedule table sucessfully created");
     })
