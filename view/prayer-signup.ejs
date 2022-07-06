@@ -200,7 +200,7 @@
             let validation_status = validateFrondendData(user_data);
 
             if (validation_status === 0) {
-                sendDataToBackend(user_data, "/try");
+                sendDataToBackend(user_data, "/people/create");
             } else {
                 console.log("Error in validation");
             }

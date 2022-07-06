@@ -27,7 +27,7 @@ const People = sequelize.define("People", {
     whatsAppNumber: {
         type: DataTypes.STRING
     },
-    facbookHandle: {
+    facebookHandle: {
         type: DataTypes.STRING
     },
     availableTime: {
