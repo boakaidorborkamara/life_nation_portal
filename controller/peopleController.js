@@ -1,4 +1,5 @@
 const { json } = require("body-parser");
+const People = require("../model/people");
 
 //Display all churches
 const people_list = (req, res) => {
@@ -21,10 +22,20 @@ const people_detail = (req, res) => {
 // Handle person create on POST
 const people_create_post = (req, res) => {
 
-    let people_detail = req.body;
-    // console.log(JSON.stringify(people_detail));
-    console.log(req);
-    res.send({ message: "Not yet implemented People create POST" });
+    let new_signup_details = req.body;
+    console.log(new_signup_details);
+
+    //add new member to the database
+    (async() => {
+        await People.create(new_signup_details);
+
+        console.log("New member added to database");
+
+        // res.send({ "status_code": 0, "status_message": "Member added successfully" });
+    })();
+
+    // console.log(req);
+    // res.send({ message: "Not yet implemented People create POST" });
 }
 
 // Handle church delete on POST.

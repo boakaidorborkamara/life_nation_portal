@@ -26,6 +26,12 @@ const People = sequelize.define("People", {
     },
     whatsAppNumber: {
         type: DataTypes.STRING
+    },
+    facbookHandle: {
+        type: DataTypes.STRING
+    },
+    availableTime: {
+        type: DataTypes.STRING
     }
 }, {
     tableName: "people" //customize table name

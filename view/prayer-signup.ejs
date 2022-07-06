@@ -63,6 +63,13 @@
                     <input type="text" required placeholder="Last Name*" class="form-control" id="last-name">
                 </div>
                 <div class="mb-3">
+                    <span><strong>Gender:</strong></span>
+                    <input type="radio" id="male" name="Gender" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="Gender" value="Female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="mb-3">
                     <input type="text" placeholder="WhatsApp Number" class="form-control" id="WhatsApp_number">
                 </div>
                 <div class="mb-3">
@@ -107,13 +114,14 @@
         //get user data from frontend
         function getFrontendData() {
             let frontend_data = {
-                first_name: first_name.value,
-                middle_name: middle_name.value,
-                last_name: last_name.value,
-                WhatsApp_number: WhatsApp_number.value,
-                phone_number: phone_number.value,
-                facebook: facebook.value,
-                available_time: available_time.value
+                firstName: first_name.value,
+                middleName: middle_name.value,
+                lastName: last_name.value,
+                gender: gender.value,
+                phoneNumber: phone_number.value,
+                whatsAppNumber: WhatsApp_number.value,
+                facebookHandle: facebook.value,
+                availableTime: available_time.value
             }
 
             return frontend_data;
