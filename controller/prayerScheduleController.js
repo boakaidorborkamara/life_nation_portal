@@ -53,7 +53,11 @@ const prayer_schedule_create_post = (req, res) => {
     };
     // // add new member to the database
     (async() => {
-        await PrayerSchedule.create(new_schedule);
+        await PrayerSchedule.create({
+            time: " 12:00am - 1:00am",
+            whatsAppLink: "https://chat.whatsapp.com/BEVpL9DyBoiA8SS5K7lmcI",
+            sectionOfDay: "Night"
+        });
 
         console.log("New schedule added to database");
 

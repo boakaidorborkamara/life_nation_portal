@@ -20,7 +20,7 @@ const PrayerSchedule = sequelize.define("PrayerSchedule", {
 
 
 //create a table from model
-PrayerSchedule.sync({ force: true })
+PrayerSchedule.sync()
     .then(() => {
         console.log("Prayer Schedule table sucessfully created");
     })
