@@ -25,33 +25,24 @@ const people_create_post = (req, res) => {
     let new_signup_details = req.body;
     console.log(new_signup_details["availableTIme"]);
 
-    //get foreign key from prayer schedule table
-    // (async() => {
-    //     const whatsapp_group_link = await PrayerSchedule.findOne({ where: { PrayerScheduleId: new_signup_details["PrayerScheduleId"] } });
-    //     if (whatsapp_group_link === null) {
-    //         console.log('Not found!');
-    //     } else {
-    //         // console.log(project instanceof Project); // true
-    //         console.log(whatsapp_group_link); // 'My Title'
-    //     }
-    // })();
 
-    //add new member to the database
+
+
     (async() => {
+        //add new member to the database
         await People.create(new_signup_details);
-
         console.log("New member added to database");
 
-
+        // get whatsapp_group_link based on user available time 
         const whatsapp_group_link = await PrayerSchedule.findOne({ where: { id: new_signup_details["PrayerScheduleId"] } });
         if (whatsapp_group_link === null) {
             console.log('Not found!');
         } else {
-            // console.log(project instanceof Project); // true
-            console.log(whatsapp_group_link); // 'My Title'
+            console.log(whatsapp_group_link['whatsAppLink']);
+            res.send({ "status_code": 0, "status_message": "Signup Sucessful", "link": whatsapp_group_link['whatsAppLink'] });
         }
 
-        res.send({ "status_code": 0, "status_message": "Signup Sucessful" });
+
     })();
 
 

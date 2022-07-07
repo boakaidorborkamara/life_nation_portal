@@ -99,7 +99,7 @@
         </section>
     </main>
     <!-- include bootstrap js  -->
-    <script src="/javascript/bootstrap.min.js"></script>
+    <script src="../public/javascript/bootstrap.min.js"></script>
     <script>
         let signup_form = document.getElementById('signup-form');
         let first_name = document.getElementById('first-name');
@@ -244,7 +244,8 @@
                 .then(response => response.json())
                 .then((data) => {
                     console.log(data);
-                    alert(data.status_message);
+                    alert(`${data.status_message}. Click ${data.link} to join WhatsApp Group.`);
+                    console.log(data);
                 })
         }
 
