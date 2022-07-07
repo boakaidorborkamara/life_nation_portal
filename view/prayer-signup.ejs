@@ -111,11 +111,58 @@
         let available_time = document.getElementById('available-time');
         console.log(available_time.value);
         // let submit_btn = document.getElementById('submit-btn');
+        // let prayer_schedule_id = 
 
+
+
+        //generate prayer schedule dropdown dynamicly
+
+        //get data from backend and add it to dropdown list
+        async function getDataFromBackend(api_url) {
+            let dates;
+            await fetch(api_url)
+                .then(response => response.json())
+                .then((data) => {
+                    dates = data;
+                    dates = data["prayer_dates"]
+                        // return dates;
+                });
+
+
+            //add dates to HTML dropdown list
+            for (i = 0; i < dates.length; i++) {
+
+                // console.log(dates[i]);
+                // create new option tags 
+                let new_option = document.createElement('option');
+                // create text for option text 
+                let new_option_inner_text = `${dates[i]["time"]}`;
+                //add innertext to option tags
+                new_option.innerText = new_option_inner_text;
+                //set a value attribute for each option tag created
+                new_option.setAttribute("value", new_option_inner_text);
+
+
+                // create new text for id attribute 
+                let id_text = `${dates[i]["id"]}`;
+                new_option.setAttribute("id", id_text);
+
+                // add option tags to select tag as children elements 
+                available_time.append(new_option)
+
+                console.log(new_option)
+
+            }
+            console.log(available_time);
+            console.log(dates);
+        }
+
+        getDataFromBackend("/prayer_schedule");
 
         //get user data from frontend
         function getFrontendData() {
 
+            // get selected gender 
             let gender = '';
             gender_options.forEach((ele) => {
                 console.log(ele);
@@ -124,6 +171,17 @@
                     gender = ele.value;
                 }
             });
+
+            // get id attribute of user selected time
+            let selected_time_id = "";
+            for (i = 1; i < 8; i++) {
+                // console.log([i], available_time[i]);
+                if (available_time[i].innerText == available_time.value) {
+                    console.log("an element was slected")
+                    selected_time_id = available_time[i].getAttribute('id');
+                    console.log(selected_time_id)
+                }
+            }
 
 
             let frontend_data = {
@@ -134,7 +192,8 @@
                 phoneNumber: phone_number.value,
                 whatsAppNumber: WhatsApp_number.value,
                 facebookHandle: facebook.value,
-                availableTime: available_time.value
+                availableTime: available_time.value,
+                PrayerScheduleId: selected_time_id
             }
 
             // console.log(frontend_data);
@@ -143,6 +202,7 @@
 
             return frontend_data;
         }
+
 
         //validate frontend data
         function validateFrondendData(data) {
@@ -212,49 +272,6 @@
         })
 
 
-        //generate prayer schedule dropdown dynamicly
-
-        //get data from backend
-        async function getDataFromBackend(api_url) {
-            let dates;
-            await fetch(api_url)
-                .then(response => response.json())
-                .then((data) => {
-                    dates = data;
-                    dates = data["prayer_dates"]
-                        // return dates;
-                });
-
-
-            //add dates to HTML dropdown list
-            for (i = 0; i < dates.length; i++) {
-
-                // console.log(dates[i]);
-                // create new option tags 
-                let new_option = document.createElement('option');
-                // create text for option text 
-                let new_option_inner_text = `${dates[i]["time"]}`;
-                //add innertext to option tags
-                new_option.innerText = new_option_inner_text;
-                //set a value attribute for each option tag created
-                new_option.setAttribute("value", new_option_inner_text);
-
-
-                // create new text for id attribute 
-                let id_text = `${dates[i]["id"]}`;
-                new_option.setAttribute("id", id_text);
-
-                // add option tags to select tag as children elements 
-                available_time.append(new_option)
-
-                console.log(new_option)
-
-            }
-            console.log(available_time);
-            console.log(dates);
-        }
-
-        getDataFromBackend("/prayer_schedule")
 
         //add dates to HTML dropdown list
         // function addDatesToDropdown() {
