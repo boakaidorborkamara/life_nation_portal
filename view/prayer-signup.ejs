@@ -81,8 +81,8 @@
                 <div>
                     <select name="" id="available-time">
                         <option value="Time Available To Pray" selected disabled>Time Available To Pray</option>
-                        <option value="Evening">Evening</option>
-                        <option value="Morning">Morning</option>
+                        <!-- <option value="Evening">Evening</option>
+                        <option value="Morning">Morning</option> -->
                     </select>
                 </div>
                 <!-- <div class="btn-group">
@@ -210,6 +210,53 @@
 
 
         })
+
+
+        //generate prayer schedule dropdown dynamicly
+
+        //get data from backend
+        async function getDataFromBackend(api_url) {
+            let dates;
+            await fetch(api_url)
+                .then(response => response.json())
+                .then((data) => {
+                    dates = data;
+                    dates = data["prayer_dates"]
+                        // return dates;
+                });
+
+
+            //add dates to HTML dropdown list
+            for (i = 0; i < dates.length; i++) {
+                // console.log(dates[i]);
+                let new_option = document.createElement('option');
+                let new_option_inner_text = `${dates[i]["time"]}`;
+                new_option.innerText = new_option_inner_text;
+                new_option.setAttribute("value", new_option_inner_text);
+                available_time.append(new_option)
+                console.log(new_option)
+            }
+            console.log(available_time);
+            console.log(dates);
+        }
+
+        getDataFromBackend("/prayer_schedule")
+
+        //add dates to HTML dropdown list
+        // function addDatesToDropdown() {
+        //     console.log("working")
+        //     let all_dates = getDataFromBackend("/prayer_schedule");
+        //     console.log(all_dates);
+
+        //     // for (i = 0; i < all_dates.length; i++) {
+        //     //     console.log(i);
+        //     // }
+        //     // console.log(typeof all_dates);
+        // }
+
+        // addDatesToDropdown();
+
+        // getDataFromBackend("/prayer_schedule");
     </script>
 </body>
 
