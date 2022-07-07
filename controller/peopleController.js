@@ -1,4 +1,5 @@
 const People = require("../model/people");
+const PrayerSchedule = require("../model/people");
 
 //Display all churches
 const people_list = (req, res) => {
@@ -22,7 +23,18 @@ const people_detail = (req, res) => {
 const people_create_post = (req, res) => {
 
     let new_signup_details = req.body;
-    console.log(new_signup_details);
+    console.log(new_signup_details["availableTIme"]);
+
+    //get foreign key from prayer schedule table
+    // (async() => {
+    //     const my_foreign_key = await PrayerSchedule.findOne({ where: { time: new_signup_details["availableTime"] } });
+    //     if (my_foreign_key === null) {
+    //         console.log('Not found!');
+    //     } else {
+    //         // console.log(project instanceof Project); // true
+    //         console.log(my_foreign_key.id); // 'My Title'
+    //     }
+    // })();
 
     //add new member to the database
     (async() => {

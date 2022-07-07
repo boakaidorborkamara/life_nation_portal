@@ -228,13 +228,27 @@
 
             //add dates to HTML dropdown list
             for (i = 0; i < dates.length; i++) {
+
                 // console.log(dates[i]);
+                // create new option tags 
                 let new_option = document.createElement('option');
+                // create text for option text 
                 let new_option_inner_text = `${dates[i]["time"]}`;
+                //add innertext to option tags
                 new_option.innerText = new_option_inner_text;
+                //set a value attribute for each option tag created
                 new_option.setAttribute("value", new_option_inner_text);
+
+
+                // create new text for id attribute 
+                let id_text = `${dates[i]["id"]}`;
+                new_option.setAttribute("id", id_text);
+
+                // add option tags to select tag as children elements 
                 available_time.append(new_option)
+
                 console.log(new_option)
+
             }
             console.log(available_time);
             console.log(dates);
