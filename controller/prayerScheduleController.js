@@ -2,14 +2,23 @@ const PrayerSchedule = require("../model/prayer_schedule");
 
 //Display all prayer schedules
 const prayer_schedule_list = (req, res) => {
-    res.send("Prayer time list not implemented")
+    let prayer_dates = "";
+    (async() => {
+        prayer_dates = await PrayerSchedule.findAll();
+        res.send({ "status_code": 0, "status_message": "all prayer dates", prayer_dates });
+    })();
+
+    // console.log(prayers);
+    // res.send(prayers)
 }
 
 
 //Display detail page for a specific prayer schedule
 const prayer_schedule_detail = (req, res) => {
+
     res.send("Prayer detail not implemented.");
 }
+
 
 // Handle prayer scheule create on POST
 const prayer_schedule_create_post = (req, res) => {
