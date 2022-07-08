@@ -42,7 +42,7 @@ People.belongsTo(prayer_schedule);
 
 
 //create a table from model
-People.sync({ force: true })
+People.sync()
     .then(() => {
         console.log("People table sucessfully created");
     })
