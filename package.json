@@ -13,6 +13,9 @@
     },
     "author": "Boakai Dorbor Kamara",
     "license": "ISC",
+    "engines": {
+        "node": "16.15.0"
+    },
     "bugs": {
         "url": "https://github.com/boakaidorborkamara/life_church_portal/issues"
     },
