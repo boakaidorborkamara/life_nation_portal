@@ -75,9 +75,9 @@ footer {
 /* small screens or phone  */
 
 @media (max-width:767px) {
-    body {
+    /* body {
         background-color: orange;
-    }
+    } */
     #wrapper .card {
         display: block !important;
         width: 80vw;
