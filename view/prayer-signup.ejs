@@ -126,6 +126,11 @@
 
 
 
+        // hide thanks/link section
+        link_section.removeAttribute("class");
+        link_section.style.display = "none";
+
+
         //generate prayer schedule dropdown dynamicly
 
         //get data from backend and add it to dropdown list
@@ -254,17 +259,28 @@
                 .then(response => response.json())
                 .then((data) => {
                     console.log(data);
-                    alert(`${data.status_message}. Click ${data.link} to join WhatsApp Group.`);
+                    // notify user that signup was sucessful 
+                    alert(`${data.status_message}.`);
+
                     // hide signup form 
                     form_section.removeAttribute("class");
                     form_section.style.display = "none";
 
+
+                    // show thanks/link section
+
+                    link_section.setAttribute("class", "d-flex flex-column justify-content-around align-items-center text-center");
+                    // link_section.style.display = "d-flex";
+
+
                     //update instruction with user time
                     instruction.innerText = `Click the link below to join ${data.available_time} WhatsApp Group.`;
+
+
                     //link JOIN NOW btn to user prefer whatsapp group
                     group_link.setAttribute("href", data.link);
                     console.log(data);
-                })
+                });
         }
 
         form_section.style.display = "none";
