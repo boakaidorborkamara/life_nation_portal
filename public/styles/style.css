@@ -49,6 +49,12 @@ footer {
 }
 
 
+/* #form-section {
+    background-color: yellow;
+    display: none !important;
+} */
+
+
 /* tablet screens  */
 
 @media (max-width:768px) {

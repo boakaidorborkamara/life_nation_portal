@@ -51,7 +51,7 @@
             </h1>
             <p class="mb-3">We Are One Nation - God's People - Life Nation!</p>
         </section>
-        <section class="d-lg-flex justify-content-center align-items-center">
+        <section class="d-lg-flex justify-content-center align-items-center" id="form-section">
             <form class="bg-light  p-4" id="signup-form" method="" action="">
                 <div class="mb-3">
                     <input type="text" placeholder="First Name*" required class="form-control" id="first-name">
@@ -97,10 +97,20 @@
                 <!-- <input type="submit" id="submit-btn" class="btn btn-primary mt-3"> -->
             </form>
         </section>
+        <section class="d-flex flex-column justify-content-around align-items-center text-center" id="link-section">
+            <h1 class="mt-5 fw-bolder">THANK YOU</h1>
+            <p id="instruction">Click the link below to join WhatsApp Group.</p>
+            <a href="" id="group-link"><button type="button" class="btn btn-primary" >JOIN NOW</button></a>
+        </section>
     </main>
     <!-- include bootstrap js  -->
     <script src="../public/javascript/bootstrap.min.js"></script>
     <script>
+        let form_section = document.getElementById('form-section');
+        let link_section = document.getElementById('link-section');
+        let instruction = document.getElementById('instruction');
+        let group_link = document.getElementById('group-link');
+        console.log(group_link);
         let signup_form = document.getElementById('signup-form');
         let first_name = document.getElementById('first-name');
         let middle_name = document.getElementById('last-name');
@@ -245,10 +255,19 @@
                 .then((data) => {
                     console.log(data);
                     alert(`${data.status_message}. Click ${data.link} to join WhatsApp Group.`);
+                    // hide signup form 
+                    form_section.removeAttribute("class");
+                    form_section.style.display = "none";
+
+                    //update instruction with user time
+                    instruction.innerText = `Click the link below to join ${data.available_time} WhatsApp Group.`;
+                    //link JOIN NOW btn to user prefer whatsapp group
+                    group_link.setAttribute("href", data.link);
                     console.log(data);
                 })
         }
 
+        form_section.style.display = "none";
 
         //add functionality to submit btn
         signup_form.addEventListener('submit', () => {

@@ -39,7 +39,8 @@ const people_create_post = (req, res) => {
             console.log('Not found!');
         } else {
             console.log(whatsapp_group_link['whatsAppLink']);
-            res.send({ "status_code": 0, "status_message": "Signup Sucessful", "link": whatsapp_group_link['whatsAppLink'] });
+            res.send({ "status_code": 0, "status_message": "Signup Sucessful", "link": whatsapp_group_link['whatsAppLink'], "available_time": whatsapp_group_link['time'] });
+            // res.redirect('/thanks')
         }
 
 
