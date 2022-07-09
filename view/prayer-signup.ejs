@@ -13,7 +13,7 @@
 
 <body>
     <!--navigation bar-->
-    <header class="bg-light">
+    <header class="bg-light" style="position:fixed; top:0px; z-index: 1; width: 100%;">
         <section class=" p-2" id="nav-area">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -21,6 +21,7 @@
                         <a class="navbar-brand fw-bolder fs-3" href="/">
                             <!-- <i class="fas fa-warehouse text-red"></i> -->
                             Life<span style="color: #2f5c06;">Church</span>
+                            <!-- <img src="/images/logo.jpg" alt=""> -->
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,10 +35,10 @@
                                     <a class="nav-link active fw-bold py-3" aria-current="page" href="/prayer-signup">Find Prayer Groups</a>
                                 </li>
                                 <li class="nav-item ps-2">
-                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="#">Refresh Attendance</a>
+                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="/prayer-signup">Refresh Attendance</a>
                                 </li>
                                 <li class="nav-item ps-2">
-                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="https://www.facebook.com/lifechurch.liberia" target="blank">About Us</a>
+                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="https://www.facebook.com/lifechurch.liberia" target="blank">About</a>
                                 </li>
                                 <li class="nav-item ps-2">
                                     <a class="nav-link active fw-bold py-3" aria-current="page" href="https://www.facebook.com/lifechurch.liberia" target="blank">Contact Us</a>
@@ -51,7 +52,7 @@
         </section>
     </header>
     <main>
-        <section class="d-flex flex-column justify-content-center align-items-center" id="form-section">
+        <section class="d-flex flex-column justify-content-center align-items-center" id="form-section" style="margin-top: 120px;">
 
             <form class="bg-light  p-4 rounded m-4" id="signup-form" method="" action="">
                 <h1 class="mb-4 fw-bolder text-center" style="color: #2f5c06;">
