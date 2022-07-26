@@ -29,6 +29,7 @@ app.use(express.static('public'));
 const db = require('./db-config/database');
 const people_table = require('./model/people');
 const prayer_schedule_table = require('./model/prayer_schedule');
+const attendance_table = require('./model/attendance');
 
 
 
