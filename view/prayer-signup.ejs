@@ -1,96 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Life Church Portal</title>
-    <link rel="icon" href="/images/logo.jpg">
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/style.css">
-</head>
+    <link rel="icon" href="/images/logo.jpg" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
 
-<body>
+  <body>
     <!--navigation bar-->
-    <header class="bg-light" style="position:fixed; top:0px; z-index: 1; width: 100%;">
-        <section class=" p-2" id="nav-area">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand fw-bolder fs-3" href="/">
-                            <!-- <i class="fas fa-warehouse text-red"></i> -->
-                            Life<span style="color: #2f5c06;">Church</span>
-                            <!-- <img src="/images/logo.jpg" alt=""> -->
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item ps-2">
-                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="#"></a>
-                                </li>
-                                <li class="nav-item ps-2">
-                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="/prayer-signup">Find Prayer Groups</a>
-                                </li>
-                                <li class="nav-item ps-2">
-                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="/prayer-signup">Refresh Attendance</a>
-                                </li>
-                                <li class="nav-item ps-2">
-                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="https://www.facebook.com/lifechurch.liberia" target="blank">About</a>
-                                </li>
-                                <li class="nav-item ps-2">
-                                    <a class="nav-link active fw-bold py-3" aria-current="page" href="https://www.facebook.com/lifechurch.liberia" target="blank">Contact Us</a>
-                                </li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </section>
-    </header>
+    <%- include('partials/header') %>
     <main>
-        <section class="d-flex flex-column justify-content-center align-items-center" id="form-section" style="margin-top: 120px;">
-
-            <form class="bg-light  p-4 rounded m-4" id="signup-form" method="" action="">
-                <h1 class="mb-4 fw-bolder text-center" style="color: #2f5c06;">
-                    Let's Pray Together
-                </h1>
-                <div class="mb-3">
-                    <input type="text" placeholder="First Name*" required class="form-control" id="first-name">
-                </div>
-                <div class="mb-3">
-                    <input type="text" placeholder="Middle Name" class="form-control" id="middle-name">
-                </div>
-                <div class="mb-3">
-                    <input type="text" required placeholder="Last Name*" class="form-control" id="last-name">
-                </div>
-                <div class="mb-3">
-                    <span><strong>Choose Gender:</strong></span>
-                    <input type="radio" id="male" name="Gender" value="Male">
-                    <label for="male">Male</label>
-                    <input type="radio" id="female" name="Gender" value="Female">
-                    <label for="female">Female</label>
-                </div>
-                <div class="mb-3">
-                    <input type="tel" placeholder="WhatsApp Number" class="form-control" id="WhatsApp_number">
-                </div>
-                <div class="mb-3">
-                    <input type="tel" placeholder="Phone Number" class="form-control" id="phone_number">
-                </div>
-                <div class="mb-3">
-                    <input type="text" placeholder="Facebook Handle" class="form-control" id="facebook">
-                </div>
-                <div>
-                    <select name="" id="available-time" style="padding:5px; width: 100%;">
-                        <option value="Time Available To Pray" selected disabled>Time Available To Pray</option>
-                        <!-- <option value="Evening">Evening</option>
+      <section
+        class="d-flex flex-column justify-content-center align-items-center"
+        id="form-section"
+        style="margin-top: 120px"
+      >
+        <form
+          class="bg-light p-4 rounded m-4"
+          id="signup-form"
+          method=""
+          action=""
+        >
+          <h1 class="mb-4 fw-bolder text-center" style="color: #2f5c06">
+            Let's Pray Together
+          </h1>
+          <div class="mb-3">
+            <input
+              type="text"
+              placeholder="First Name*"
+              required
+              class="form-control"
+              id="first-name"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              placeholder="Middle Name"
+              class="form-control"
+              id="middle-name"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              required
+              placeholder="Last Name*"
+              class="form-control"
+              id="last-name"
+            />
+          </div>
+          <div class="mb-3">
+            <span><strong>Choose Gender:</strong></span>
+            <input type="radio" id="male" name="Gender" value="Male" />
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="Gender" value="Female" />
+            <label for="female">Female</label>
+          </div>
+          <div class="mb-3">
+            <input
+              type="tel"
+              placeholder="WhatsApp Number"
+              class="form-control"
+              id="WhatsApp_number"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              class="form-control"
+              id="phone_number"
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              placeholder="Facebook Handle"
+              class="form-control"
+              id="facebook"
+            />
+          </div>
+          <div>
+            <select
+              name=""
+              id="available-time"
+              style="padding: 5px; width: 100%"
+            >
+              <option value="Time Available To Pray" selected disabled>
+                Time Available To Pray
+              </option>
+              <!-- <option value="Evening">Evening</option>
                         <option value="Morning">Morning</option> -->
-                    </select>
-                </div>
-                <!-- <div class="btn-group">
+            </select>
+          </div>
+          <!-- <div class="btn-group">
                     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Time Available
                     </button>
@@ -98,242 +106,238 @@
                         ...
                     </ul>
                 </div> -->
-                <button type="submit" id="submit-btn" class="btn btn-primary mt-3" style="background-color: #2f5c06;">Sign Up</button>
-                <!-- <input type="submit" id="submit-btn" class="btn btn-primary mt-3"> -->
-            </form>
-        </section>
-        <section class="d-flex flex-column justify-content-around align-items-center text-center p-5" id="link-section" style="margin-top: 150px;">
-            <div class="p-5" style="background-color: rgb(29, 29, 27); width: 70%;">
-                <h1 class=" fw-bolder text-light fs-1">THANK YOU</h1>
-                <p class="text-light" id="instruction">Click the link below to join WhatsApp Group.</p>
-                <a href="" id="group-link"><button type="button" class="btn btn-primary w-50%" >JOIN NOW</button></a>
-            </div>
-        </section>
+          <button
+            type="submit"
+            id="submit-btn"
+            class="btn btn-primary mt-3"
+            style="background-color: #2f5c06"
+          >
+            Sign Up
+          </button>
+          <!-- <input type="submit" id="submit-btn" class="btn btn-primary mt-3"> -->
+        </form>
+      </section>
+      <section
+        class="d-flex flex-column justify-content-around align-items-center text-center p-5"
+        id="link-section"
+        style="margin-top: 150px"
+      >
+        <div class="p-5" style="background-color: rgb(29, 29, 27); width: 70%">
+          <h1 class="fw-bolder text-light fs-1">THANK YOU</h1>
+          <p class="text-light" id="instruction">
+            Click the link below to join WhatsApp Group.
+          </p>
+          <a href="" id="group-link"
+            ><button type="button" class="btn btn-primary w-50%">
+              JOIN NOW
+            </button></a
+          >
+        </div>
+      </section>
     </main>
     <!-- include bootstrap js  -->
     <script src="/javascript/bootstrap.min.js"></script>
     <script>
-        let form_section = document.getElementById('form-section');
-        let link_section = document.getElementById('link-section');
-        let instruction = document.getElementById('instruction');
-        let group_link = document.getElementById('group-link');
-        console.log(group_link);
-        console.log(instruction);
-        let signup_form = document.getElementById('signup-form');
-        let first_name = document.getElementById('first-name');
-        let middle_name = document.getElementById('last-name');
-        let last_name = document.getElementById('last-name');
-        let gender_options = document.getElementsByName("Gender");
-        let WhatsApp_number = document.getElementById('WhatsApp_number');
-        let phone_number = document.getElementById('phone_number');
-        let facebook = document.getElementById('facebook');
-        let available_time = document.getElementById('available-time');
-        console.log(available_time.value);
-        // let submit_btn = document.getElementById('submit-btn');
-        // let prayer_schedule_id = 
+      let form_section = document.getElementById("form-section");
+      let link_section = document.getElementById("link-section");
+      let instruction = document.getElementById("instruction");
+      let group_link = document.getElementById("group-link");
+      console.log(group_link);
+      console.log(instruction);
+      let signup_form = document.getElementById("signup-form");
+      let first_name = document.getElementById("first-name");
+      let middle_name = document.getElementById("last-name");
+      let last_name = document.getElementById("last-name");
+      let gender_options = document.getElementsByName("Gender");
+      let WhatsApp_number = document.getElementById("WhatsApp_number");
+      let phone_number = document.getElementById("phone_number");
+      let facebook = document.getElementById("facebook");
+      let available_time = document.getElementById("available-time");
+      console.log(available_time.value);
+      // let submit_btn = document.getElementById('submit-btn');
+      // let prayer_schedule_id =
 
+      // hide thanks/link section
+      link_section.removeAttribute("class");
+      link_section.style.display = "none";
 
+      //generate prayer schedule dropdown dynamicly
 
-        // hide thanks/link section
-        link_section.removeAttribute("class");
-        link_section.style.display = "none";
-
-
-        //generate prayer schedule dropdown dynamicly
-
-        //get data from backend and add it to dropdown list
-        async function getDataFromBackend(api_url) {
-            let dates;
-            await fetch(api_url)
-                .then(response => response.json())
-                .then((data) => {
-                    dates = data;
-                    dates = data["prayer_dates"]
-                        // return dates;
-                });
-
-
-            //add dates to HTML dropdown list
-            for (i = 0; i < dates.length; i++) {
-
-                // console.log(dates[i]);
-                // create new option tags 
-                let new_option = document.createElement('option');
-                // create text for option text 
-                let new_option_inner_text = `${dates[i]["time"]}`;
-                //add innertext to option tags
-                new_option.innerText = new_option_inner_text;
-                //set a value attribute for each option tag created
-                new_option.setAttribute("value", new_option_inner_text);
-
-
-                // create new text for id attribute 
-                let id_text = `${dates[i]["id"]}`;
-                new_option.setAttribute("id", id_text);
-
-                // add option tags to select tag as children elements 
-                available_time.append(new_option)
-
-                console.log(new_option)
-
-            }
-            console.log(available_time);
-            console.log(dates);
-        }
-
-        getDataFromBackend("/prayer_schedule");
-
-        //get user data from frontend
-        function getFrontendData() {
-
-            // get selected gender 
-            let gender = '';
-            gender_options.forEach((ele) => {
-                console.log(ele);
-                if (ele.checked) {
-                    console.log(ele.value);
-                    gender = ele.value;
-                }
-            });
-
-            // get id attribute of user selected time
-            let selected_time_id = "";
-            for (i = 1; i < 8; i++) {
-                // console.log([i], available_time[i]);
-                if (available_time[i].innerText == available_time.value) {
-                    console.log("an element was slected")
-                    selected_time_id = available_time[i].getAttribute('id');
-                    console.log(selected_time_id)
-                }
-            }
-
-
-            let frontend_data = {
-                firstName: first_name.value,
-                middleName: middle_name.value,
-                lastName: last_name.value,
-                gender: gender,
-                phoneNumber: phone_number.value,
-                whatsAppNumber: WhatsApp_number.value,
-                facebookHandle: facebook.value,
-                availableTime: available_time.value,
-                PrayerScheduleId: selected_time_id
-            }
-
-            // console.log(frontend_data);
-
-
-
-            return frontend_data;
-        }
-
-
-        //validate frontend data
-        function validateFrondendData(data) {
-            console.log(available_time);
-            if (data.firstName === "") {
-                first_name.style.border = "1px solid red";
-                alert("First Name field is required");
-                return 1;
-            } else if (data.lastName === "") {
-                last_name.style.border = "1px solid red";
-                alert("Last Name field is required");
-                return 1;
-            } else if (data.gender === "") {
-                alert("Select a gender");
-                return 1;
-            } else if (data.availableTime == "Time Available To Pray") {
-                available_time.style.border = "1px solid red";
-                alert("Please select an Available Prayer Time");
-                return 1;
-            }
-
-            return 0;
-        }
-
-
-        //send data to the backend
-        function sendDataToBackend(user_data, url) {
-            console.log("Sending data...........");
-
-            fetch(url, {
-
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(user_data)
-                })
-                .then(response => response.json())
-                .then((data) => {
-                    console.log(data);
-                    // notify user that signup was sucessful 
-                    // alert(`${data.status_message}.`);
-
-                    // hide signup form 
-                    form_section.removeAttribute("class");
-                    form_section.style.display = "none";
-
-
-                    // show thanks/link section
-
-                    link_section.setAttribute("class", "d-flex flex-column justify-content-around align-items-center text-center");
-                    // link_section.style.display = "d-flex";
-
-
-                    //update instruction with user time
-                    instruction.innerText = `Click the button below to join the ${data.available_time} WhatsApp Group.`;
-
-
-                    //link JOIN NOW btn to user prefer whatsapp group
-                    group_link.setAttribute("href", data.link);
-                    console.log(data);
-                });
-        }
-
-        form_section.style.display = "none";
-
-        //add functionality to submit btn
-        signup_form.addEventListener('submit', () => {
-
-            //remove default behaviour from form 
-            event.preventDefault()
-
-
-            //data from frontend
-            let user_data = getFrontendData();
-            console.log(user_data);
-
-            //validate data
-            let validation_status = validateFrondendData(user_data);
-
-            if (validation_status === 0) {
-                sendDataToBackend(user_data, "/people/create");
-            } else {
-                console.log("Error in validation");
-            }
-
-
-        })
-
-
+      //get data from backend and add it to dropdown list
+      async function getDataFromBackend(api_url) {
+        let dates;
+        await fetch(api_url)
+          .then((response) => response.json())
+          .then((data) => {
+            dates = data;
+            dates = data["prayer_dates"];
+            // return dates;
+          });
 
         //add dates to HTML dropdown list
-        // function addDatesToDropdown() {
-        //     console.log("working")
-        //     let all_dates = getDataFromBackend("/prayer_schedule");
-        //     console.log(all_dates);
+        for (i = 0; i < dates.length; i++) {
+          // console.log(dates[i]);
+          // create new option tags
+          let new_option = document.createElement("option");
+          // create text for option text
+          let new_option_inner_text = `${dates[i]["time"]}`;
+          //add innertext to option tags
+          new_option.innerText = new_option_inner_text;
+          //set a value attribute for each option tag created
+          new_option.setAttribute("value", new_option_inner_text);
 
-        //     // for (i = 0; i < all_dates.length; i++) {
-        //     //     console.log(i);
-        //     // }
-        //     // console.log(typeof all_dates);
-        // }
+          // create new text for id attribute
+          let id_text = `${dates[i]["id"]}`;
+          new_option.setAttribute("id", id_text);
 
-        // addDatesToDropdown();
+          // add option tags to select tag as children elements
+          available_time.append(new_option);
 
-        // getDataFromBackend("/prayer_schedule");
+          console.log(new_option);
+        }
+        console.log(available_time);
+        console.log(dates);
+      }
+
+      getDataFromBackend("/prayer_schedule");
+
+      //get user data from frontend
+      function getFrontendData() {
+        // get selected gender
+        let gender = "";
+        gender_options.forEach((ele) => {
+          console.log(ele);
+          if (ele.checked) {
+            console.log(ele.value);
+            gender = ele.value;
+          }
+        });
+
+        // get id attribute of user selected time
+        let selected_time_id = "";
+        for (i = 1; i < 8; i++) {
+          // console.log([i], available_time[i]);
+          if (available_time[i].innerText == available_time.value) {
+            console.log("an element was slected");
+            selected_time_id = available_time[i].getAttribute("id");
+            console.log(selected_time_id);
+          }
+        }
+
+        let frontend_data = {
+          firstName: first_name.value,
+          middleName: middle_name.value,
+          lastName: last_name.value,
+          gender: gender,
+          phoneNumber: phone_number.value,
+          whatsAppNumber: WhatsApp_number.value,
+          facebookHandle: facebook.value,
+          availableTime: available_time.value,
+          PrayerScheduleId: selected_time_id,
+        };
+
+        // console.log(frontend_data);
+
+        return frontend_data;
+      }
+
+      //validate frontend data
+      function validateFrondendData(data) {
+        console.log(available_time);
+        if (data.firstName === "") {
+          first_name.style.border = "1px solid red";
+          alert("First Name field is required");
+          return 1;
+        } else if (data.lastName === "") {
+          last_name.style.border = "1px solid red";
+          alert("Last Name field is required");
+          return 1;
+        } else if (data.gender === "") {
+          alert("Select a gender");
+          return 1;
+        } else if (data.availableTime == "Time Available To Pray") {
+          available_time.style.border = "1px solid red";
+          alert("Please select an Available Prayer Time");
+          return 1;
+        }
+
+        return 0;
+      }
+
+      //send data to the backend
+      function sendDataToBackend(user_data, url) {
+        console.log("Sending data...........");
+
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user_data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            // notify user that signup was sucessful
+            // alert(`${data.status_message}.`);
+
+            // hide signup form
+            form_section.removeAttribute("class");
+            form_section.style.display = "none";
+
+            // show thanks/link section
+
+            link_section.setAttribute(
+              "class",
+              "d-flex flex-column justify-content-around align-items-center text-center"
+            );
+            // link_section.style.display = "d-flex";
+
+            //update instruction with user time
+            instruction.innerText = `Click the button below to join the ${data.available_time} WhatsApp Group.`;
+
+            //link JOIN NOW btn to user prefer whatsapp group
+            group_link.setAttribute("href", data.link);
+            console.log(data);
+          });
+      }
+
+      form_section.style.display = "none";
+
+      //add functionality to submit btn
+      signup_form.addEventListener("submit", () => {
+        //remove default behaviour from form
+        event.preventDefault();
+
+        //data from frontend
+        let user_data = getFrontendData();
+        console.log(user_data);
+
+        //validate data
+        let validation_status = validateFrondendData(user_data);
+
+        if (validation_status === 0) {
+          sendDataToBackend(user_data, "/people/create");
+        } else {
+          console.log("Error in validation");
+        }
+      });
+
+      //add dates to HTML dropdown list
+      // function addDatesToDropdown() {
+      //     console.log("working")
+      //     let all_dates = getDataFromBackend("/prayer_schedule");
+      //     console.log(all_dates);
+
+      //     // for (i = 0; i < all_dates.length; i++) {
+      //     //     console.log(i);
+      //     // }
+      //     // console.log(typeof all_dates);
+      // }
+
+      // addDatesToDropdown();
+
+      // getDataFromBackend("/prayer_schedule");
     </script>
-</body>
-
+  </body>
 </html>

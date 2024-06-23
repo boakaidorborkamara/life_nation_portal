@@ -1,9 +1,19 @@
 body {
-    background-color: #031120;
+    /* background-color: #031120; */
+    /* background-color: #ffffff; */
     /* background-image: url('../images/openfield.jpg');
     background-repeat: no-repeat;
     background-size: cover; */
+font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
+/* .lilita-one-regular {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+} */
 
 header {
     margin-bottom: 40px;
