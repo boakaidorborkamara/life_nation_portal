@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Church Portal</title>
+    <link rel="icon" href="/images/logo.jpg" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lilita+One&family=Poetsen+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <style>
+    h1 {
+      font-family: "Poetsen One", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+
+  <body>
+    <!--navigation bar-->
+    <%- include('partials/header') %>
+    <main>
+      <!-- hero section  -->
+      <div
+        class="jumbotron text-center py-5 d-flex align-items-center justify-content-center"
+        style="
+          background: url(/images/pastors4.jpg);
+          background-size: cover;
+          background-position: center;
+          height: 80vh;
+        "
+      >
+        <div class="py-5">
+          <!-- <h1 class="display-3 fw-bold text-light">
+            Learn, Discuss, Pray, & Grow Together
+          </h1> -->
+
+          <h1 class="display-3 fw-bold text-light">
+            You weren't designed<br />
+            to do life alone.
+          </h1>
+
+          <p class="lead text-light">
+            Get connected to one of our small groups to LEARN, DISCUSS, PRAY, &
+            GROW together
+          </p>
+
+          <p class="lead mt-5">
+            <a
+              class="btn btn-danger fw-bold btn-lg"
+              href="/prayer-signup"
+              role="button"
+              >FIND YOUR TRIBE</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="py-5 bg-light">
+        <div
+          class="d-lg-flex p-md-5 my-5 justify-content-center align-items-center"
+        >
+          <div class="px-4">
+            <img
+              src="/images/pastors.jpg"
+              class="img-fluid"
+              alt="Responsive image"
+            />
+          </div>
+
+          <div class="px-4">
+            <div class="text-dark py-5">
+              <h1 class="display-4 fw-bold">
+                No matter where you are or who you are, there’s a group for you
+              </h1>
+              <p class="lead mt-4">
+                Choose filters like locations, topics, and time to find the
+                group for you.
+              </p>
+
+              <p class="lead mt-5">
+                <a
+                  class="btn btn-danger fw-bold btn-lg"
+                  href="/prayer-signup"
+                  role="button"
+                  >BROWSE GROUPS</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-5 bg-light">
+        <div class="text-dark py-lg-5 px-4 my-lg-5 text-center">
+          <h1 class="display-1 fw-bold">
+            Connecting People. <br />
+            Activating Faith.
+          </h1>
+          <p class="lead mt-4">
+            When we connect with people who are committed to following Jesus, we
+            set ourselves up for the support and encouragement we need to
+            thrive.
+          </p>
+
+          <div class="mt-5">
+            <img
+              src="/images/31days-prayer-flyer.jpg"
+              class="img-fluid"
+              alt="Responsive image"
+            />
+          </div>
+
+          <p class="lead mt-5">
+            <a
+              class="btn btn-danger fw-bold btn-lg"
+              href="/prayer-signup"
+              role="button"
+              >SCHEDULE PRAYER</a
+            >
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="/javascript/bootstrap.min.js"></script>
+  </body>
+</html>
