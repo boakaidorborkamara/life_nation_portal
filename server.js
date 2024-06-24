@@ -28,12 +28,14 @@ const attendance_table = require("./model/attendance");
 
 //ROUTES
 const homepage_router = require("./route/homepage_router");
+const signupRouter = require("./route/signup-router");
 const thank_you_page = require("./route/thanks_router");
 const people_router = require("./route/people_router");
 const prayer_schedule_router = require("./route/prayer_schedule_router");
 const { urlencoded } = require("body-parser");
 
 app.use(homepage_router);
+app.use(signupRouter);
 app.use(thank_you_page);
 app.use(people_router);
 app.use(prayer_schedule_router);

@@ -1,6 +1,6 @@
-// display homepage
-const homepage = (req, res) => {
+// display signup page
+const displaySignupPage = (req, res) => {
   res.render("../view/signup");
 };
 
-module.exports = homepage;
+module.exports = { displaySignupPage };
