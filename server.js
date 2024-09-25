@@ -29,11 +29,11 @@ const attendance_table = require("./model/attendance");
 //ROUTES
 const homepage_router = require("./route/homepage_router");
 const prayer_groups_router = require("./route/prayer-groups-router");
+const signup_router = require("./route/signup-router");
 
 app.use(homepage_router);
 app.use(prayer_groups_router);
-
-// app.use(signupRouter);
+app.use(signup_router);
 // app.use(loginRouter);
 
 // app.use(thank_you_page);
