@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FaithBuilder</title>
+    <link rel="shortcut icon" type="image/png" />
+    <link rel="stylesheet" href="/dashboard/css/styles.min.css" />
+  </head>
+
+  <body>
+    <!--  Body Wrapper -->
+    <div>
+      <div
+        class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center"
+      >
+        <div class="align-items-center w-100">
+          <div class="container text-center">
+            <h1 class="mb-5 fw-bolder">Start a new prayer group</h1>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xxl-6 px-4">
+              <div class="card mb-0">
+                <div class="card-body">
+                  <form id="prayer-group-form">
+                    <!-- Group Name  -->
+                    <div class="mb-3">
+                      <label for="group-name" class="form-label"
+                        >Group Name</label
+                      >
+                      <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        id="group-name"
+                        required
+                        aria-describedby="textHelp"
+                      />
+                    </div>
+
+                    <!-- Description  -->
+                    <div class="mb-3">
+                      <label for="description" class="form-label"
+                        >Description</label
+                      >
+
+                      <textarea
+                        name="description"
+                        class="form-control"
+                        required
+                        id="description"
+                      ></textarea>
+                    </div>
+
+                    <!-- Prayer Region  -->
+                    <div class="mb-3">
+                      <label for="prayer-region" class="form-label"
+                        >Group Region</label
+                      >
+
+                      <select
+                        name="region"
+                        class="form-select"
+                        id="prayer-region"
+                      >
+                        <option value="default" selected disabled>
+                          Select Region
+                        </option>
+                        <option value="Paynesville">Paynesville</option>
+                        <option value="Barnersville">Barnersville</option>
+                        <option value="Sinkor">Sinkor</option>
+                        <option value="Old Road">Old Road</option>
+                      </select>
+                    </div>
+
+                    <!-- Community  -->
+                    <div class="mb-3">
+                      <label for="community" class="form-label"
+                        >Community</label
+                      >
+                      <input
+                        type="text"
+                        name="community"
+                        class="form-control"
+                        required
+                        id="community"
+                        aria-describedby="textHelp"
+                      />
+                    </div>
+
+                    <!-- WhatsApplink  -->
+                    <div class="mb-3">
+                      <label for="whatsapp" class="form-label"
+                        >WhatsApp Invite Link</label
+                      >
+                      <input
+                        type="url"
+                        name="whatsapp_link"
+                        required
+                        class="form-control"
+                        id="whatsapp"
+                        aria-describedby="textHelp"
+                      />
+                    </div>
+
+                    <input
+                      type="submit"
+                      class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2"
+                      value="CREATE GROUP"
+                    />
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                    >
+                      <a class="text-danger fw-bold ms-2" href="/prayer-groups"
+                        >Cancel</a
+                      >
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- custom script  -->
+
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/javascript/add-prayer-group.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head starts  -->
+  <%- include('./partials/dashboard-head') %>
+  <!-- head ends  -->
+
+  <body>
+    <!--  Body Wrapper -->
+    <div
+      class="page-wrapper"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+    >
+      <!-- Sidebar Start -->
+      <%- include('./partials/dashboard-sidebar') %>
+      <!--  Sidebar End -->
+
+      <!--  Main wrapper -->
+      <div class="body-wrapper">
+        <!--  Header Start -->
+        <%- include('./partials/dashboard-header') %>
+        <!--  Header End -->
+
+        <!-- page content  -->
+        <div class="container-fluid">
+          <!-- search bar  -->
+          <div class="row px-2 py-5 bg-dark rounded">
+            <div class="col-lg-10 my-3">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search for groups..."
+                aria-label="Search"
+              />
+            </div>
+
+            <a
+              href="/add-prayer-group"
+              type="button"
+              class="btn btn-dark col-lg-2 my-3"
+            >
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 5l0 14" />
+                  <path d="M5 12l14 0" /></svg></span
+              ><span>START NEW GROUP</span>
+            </a>
+          </div>
+
+          <!-- sort groups  -->
+          <div class="d-flex justify-content-between mt-5 mb-2">
+            <h1>All Groups</h1>
+            <div class="dropdown">
+              <button
+                class="btn border-0 dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Sort groups by:
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- groups  -->
+          <% if (prayer_groups && prayer_groups.length > 0) { %>
+          <div class="mt-4">
+            <% prayer_groups.forEach(function(group){ %>
+
+            <!-- card  -->
+            <div>
+              <div
+                class="card"
+                style="background-color: rgb(240, 240, 240) !important"
+              >
+                <div class="card-body">
+                  <div
+                    class="d-lg-flex align-items-center justify-content-between pb-4"
+                  >
+                    <!-- group name  -->
+                    <h2 class="card-title fw-bolder"><%= group.name %></h2>
+
+                    <div class="">
+                      <small class="mb-2 text-muted me-4"
+                        ><strong>Region:</strong> <%= group.region %></small
+                      >
+
+                      <small class="mb-2 text-muted me-4"
+                        ><strong>Members Count:</strong>0</small
+                      >
+                      <!-- <small class="mb-2 text-muted me-4">0 Posts</small> -->
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <p class="card-text col-lg-8"><%= group.description %></p>
+                    <div class="col-lg-4">
+                      <button
+                        type="button"
+                        class="btn btn-outline-success mx-lg-2"
+                      >
+                        JOIN GROUP
+                      </button>
+                      <button type="button" class="btn btn-dark mx-lg-2">
+                        OPEN GROUP
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <hr />
+                    <p>
+                      Created by:
+                      <a href="#" class="card-link text-success"
+                        >Boakai Dorbor Kamara</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <% }); %>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <!-- dashboard script starts  -->
+    <%- include('./partials/dashboard-script') %>
+    <!-- dashboard script ends  -->
+  </body>
+</html>

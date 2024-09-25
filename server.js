@@ -28,21 +28,18 @@ const attendance_table = require("./model/attendance");
 
 //ROUTES
 const homepage_router = require("./route/homepage_router");
-const signupRouter = require("./route/signup-router");
-const loginRouter = require("./route/login-router");
-const prayerGroupsRouter = require("./route/prayer-groups-router");
-const thank_you_page = require("./route/thanks_router");
-const people_router = require("./route/people_router");
-const prayer_schedule_router = require("./route/prayer_schedule_router");
-const { urlencoded } = require("body-parser");
+const prayer_groups_router = require("./route/prayer-groups-router");
 
 app.use(homepage_router);
-app.use(signupRouter);
-app.use(loginRouter);
-app.use(prayerGroupsRouter);
-app.use(thank_you_page);
-app.use(people_router);
-app.use(prayer_schedule_router);
+app.use(prayer_groups_router);
+
+// app.use(signupRouter);
+// app.use(loginRouter);
+
+// app.use(thank_you_page);
+// app.use(people_router);
+// app.use(prayer_schedule_router);
+// app.use(user_router);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

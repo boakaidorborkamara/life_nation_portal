@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life Church Portal</title>
+    <link rel="icon" href="/images/logo.jpg" />
+    <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+
+  <body>
+    <!--navigation bar-->
+    <%- include('partials/header') %>
+    <main>
+      <h1>kdkdkd</h1>
+    </main>
+    <!-- include bootstrap js  -->
+    <script src="/javascript/bootstrap.min.js"></script>
+    <script>
+      let form_section = document.getElementById("form-section");
+      let link_section = document.getElementById("link-section");
+      let instruction = document.getElementById("instruction");
+      let group_link = document.getElementById("group-link");
+      console.log(group_link);
+      console.log(instruction);
+      let signup_form = document.getElementById("signup-form");
+      let first_name = document.getElementById("first-name");
+      let middle_name = document.getElementById("last-name");
+      let last_name = document.getElementById("last-name");
+      let gender_options = document.getElementsByName("Gender");
+      let WhatsApp_number = document.getElementById("WhatsApp_number");
+      let phone_number = document.getElementById("phone_number");
+      let facebook = document.getElementById("facebook");
+      let available_time = document.getElementById("available-time");
+      console.log(available_time.value);
+      // let submit_btn = document.getElementById('submit-btn');
+      // let prayer_schedule_id =
+
+      // hide thanks/link section
+      link_section.removeAttribute("class");
+      link_section.style.display = "none";
+
+      //generate prayer schedule dropdown dynamicly
+
+      //get data from backend and add it to dropdown list
+      async function getDataFromBackend(api_url) {
+        let dates;
+        await fetch(api_url)
+          .then((response) => response.json())
+          .then((data) => {
+            dates = data;
+            dates = data["prayer_dates"];
+            // return dates;
+          });
+
+        //add dates to HTML dropdown list
+        for (i = 0; i < dates.length; i++) {
+          // console.log(dates[i]);
+          // create new option tags
+          let new_option = document.createElement("option");
+          // create text for option text
+          let new_option_inner_text = `${dates[i]["time"]}`;
+          //add innertext to option tags
+          new_option.innerText = new_option_inner_text;
+          //set a value attribute for each option tag created
+          new_option.setAttribute("value", new_option_inner_text);
+
+          // create new text for id attribute
+          let id_text = `${dates[i]["id"]}`;
+          new_option.setAttribute("id", id_text);
+
+          // add option tags to select tag as children elements
+          available_time.append(new_option);
+
+          console.log(new_option);
+        }
+        console.log(available_time);
+        console.log(dates);
+      }
+
+      getDataFromBackend("/prayer_schedule");
+
+      //get user data from frontend
+      function getFrontendData() {
+        // get selected gender
+        let gender = "";
+        gender_options.forEach((ele) => {
+          console.log(ele);
+          if (ele.checked) {
+            console.log(ele.value);
+            gender = ele.value;
+          }
+        });
+
+        // get id attribute of user selected time
+        let selected_time_id = "";
+        for (i = 1; i < 8; i++) {
+          // console.log([i], available_time[i]);
+          if (available_time[i].innerText == available_time.value) {
+            console.log("an element was slected");
+            selected_time_id = available_time[i].getAttribute("id");
+            console.log(selected_time_id);
+          }
+        }
+
+        let frontend_data = {
+          firstName: first_name.value,
+          middleName: middle_name.value,
+          lastName: last_name.value,
+          gender: gender,
+          phoneNumber: phone_number.value,
+          whatsAppNumber: WhatsApp_number.value,
+          facebookHandle: facebook.value,
+          availableTime: available_time.value,
+          PrayerScheduleId: selected_time_id,
+        };
+
+        // console.log(frontend_data);
+
+        return frontend_data;
+      }
+
+      //validate frontend data
+      function validateFrondendData(data) {
+        console.log(available_time);
+        if (data.firstName === "") {
+          first_name.style.border = "1px solid red";
+          alert("First Name field is required");
+          return 1;
+        } else if (data.lastName === "") {
+          last_name.style.border = "1px solid red";
+          alert("Last Name field is required");
+          return 1;
+        } else if (data.gender === "") {
+          alert("Select a gender");
+          return 1;
+        } else if (data.availableTime == "Time Available To Pray") {
+          available_time.style.border = "1px solid red";
+          alert("Please select an Available Prayer Time");
+          return 1;
+        }
+
+        return 0;
+      }
+
+      //send data to the backend
+      function sendDataToBackend(user_data, url) {
+        console.log("Sending data...........");
+
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user_data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            // notify user that signup was sucessful
+            // alert(`${data.status_message}.`);
+
+            // hide signup form
+            form_section.removeAttribute("class");
+            form_section.style.display = "none";
+
+            // show thanks/link section
+
+            link_section.setAttribute(
+              "class",
+              "d-flex flex-column justify-content-around align-items-center text-center"
+            );
+            // link_section.style.display = "d-flex";
+
+            //update instruction with user time
+            instruction.innerText = `Click the button below to join the ${data.available_time} WhatsApp Group.`;
+
+            //link JOIN NOW btn to user prefer whatsapp group
+            group_link.setAttribute("href", data.link);
+            console.log(data);
+          });
+      }
+
+      form_section.style.display = "none";
+
+      //add functionality to submit btn
+      signup_form.addEventListener("submit", () => {
+        //remove default behaviour from form
+        event.preventDefault();
+
+        //data from frontend
+        let user_data = getFrontendData();
+        console.log(user_data);
+
+        //validate data
+        let validation_status = validateFrondendData(user_data);
+
+        if (validation_status === 0) {
+          sendDataToBackend(user_data, "/people/create");
+        } else {
+          console.log("Error in validation");
+        }
+      });
+
+      //add dates to HTML dropdown list
+      // function addDatesToDropdown() {
+      //     console.log("working")
+      //     let all_dates = getDataFromBackend("/prayer_schedule");
+      //     console.log(all_dates);
+
+      //     // for (i = 0; i < all_dates.length; i++) {
+      //     //     console.log(i);
+      //     // }
+      //     // console.log(typeof all_dates);
+      // }
+
+      // addDatesToDropdown();
+
+      // getDataFromBackend("/prayer_schedule");
+    </script>
+  </body>
+</html>
