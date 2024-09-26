@@ -4,11 +4,16 @@ const sequelize = require("../db-config/database");
 const User = sequelize.define(
   "User",
   {
-    firstName: {
+    id: {
+      type: Sequelize.UUID,
+      primaryKey: true,
+      defaultValue: Sequelize.UUIDV4,
+    },
+    first_name: {
       type: DataTypes.STRING(20),
       allowNull: false,
     },
-    lastName: {
+    last_name: {
       type: DataTypes.STRING(20),
       allowNull: false,
     },
@@ -19,9 +24,9 @@ const User = sequelize.define(
     },
     gender: {
       type: DataTypes.STRING(7),
-      allowNull: false,
+      allowNull: true,
     },
-    phoneNumber: {
+    phone_number: {
       type: DataTypes.STRING,
     },
     password: {
@@ -35,7 +40,7 @@ const User = sequelize.define(
 );
 
 //create a table from model
-User.sync().then(() => {
+User.sync({ force: true }).then(() => {
   console.log("User table sucessfully created");
 });
 

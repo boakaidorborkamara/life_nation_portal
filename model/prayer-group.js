@@ -5,8 +5,9 @@ const PrayerGroup = sequelize.define(
   "PrayerGroup",
   {
     id: {
-      type: DataTypes.UUID(),
+      type: DataTypes.UUID,
       primaryKey: true,
+      defaultValue: Sequelize.UUIDV4,
     },
     name: {
       type: DataTypes.STRING,

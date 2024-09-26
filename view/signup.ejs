@@ -41,75 +41,82 @@
                     </h2>
                   </a>
                   <p class="text-center">Create Your Account</p>
-                  <form>
+                  <form id="signup-form">
                     <!-- First Name  -->
                     <div class="mb-3">
-                      <label for="exampleInputtext1" class="form-label"
+                      <label for="first-name" class="form-label"
                         >First Name</label
                       >
                       <input
                         type="text"
+                        name="first_name"
                         class="form-control"
-                        id="exampleInputtext1"
+                        id="first-name"
                         aria-describedby="textHelp"
+                        required
                       />
                     </div>
 
                     <!-- Last Name  -->
                     <div class="mb-3">
-                      <label for="exampleInputtext1" class="form-label"
+                      <label for="last-name" class="form-label"
                         >Last Name</label
                       >
                       <input
                         type="text"
+                        name="last_name"
                         class="form-control"
-                        id="exampleInputtext1"
+                        id="last-name"
                         aria-describedby="textHelp"
+                        required
                       />
                     </div>
 
                     <!-- Phone -->
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
+                      <label for="phone-number" class="form-label"
                         >Phone Number</label
                       >
                       <input
-                        type="text"
+                        type="tel"
+                        name="phone_number"
                         class="form-control"
-                        id="exampleInputEmail1"
+                        id="phone-number"
                         aria-describedby="emailHelp"
+                        required
                       />
                     </div>
 
                     <!-- Username -->
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
-                        >Username</label
-                      >
+                      <label for="username" class="form-label">Username</label>
                       <input
                         type="text"
+                        name="username"
                         class="form-control"
-                        id="exampleInputEmail1"
+                        id="username"
                         aria-describedby="emailHelp"
+                        required
                       />
                     </div>
 
                     <!-- Password  -->
                     <div class="mb-4">
-                      <label for="exampleInputPassword1" class="form-label"
-                        >Password</label
-                      >
+                      <label for="password" class="form-label">Password</label>
                       <input
                         type="password"
+                        name="password"
                         class="form-control"
-                        id="exampleInputPassword1"
+                        id="password"
+                        required
                       />
                     </div>
-                    <a
-                      href="./index.html"
+                    <input
+                      type="submit"
                       class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2"
-                      >REGISTER</a
-                    >
+                      value="REGISTER"
+                    />
+
                     <div
                       class="d-flex align-items-center justify-content-center"
                     >
@@ -128,5 +135,10 @@
     </div>
     <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- custom js  -->
+    <script src="/javascript/signup.js"></script>
+
+    <!-- sweet alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
