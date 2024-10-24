@@ -1,6 +1,6 @@
 const login_form = document.getElementById("login-form");
 
-login_form.addEventListener("submit", (e) => {
+login_form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   let login_info = extractFormData(login_form);
@@ -10,6 +10,24 @@ login_form.addEventListener("submit", (e) => {
   if (isInvalid.status === true) {
     displayError(isInvalid);
     return;
+  }
+
+  return;
+  let result = await makePostRequest("/login", login_info);
+
+  if (result.status === "success" && result.code === 0) {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: `${"Success"}`,
+      text: `${"Account created successfully!"}`,
+      showConfirmButton: false,
+      timer: 3500,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 3500);
   }
 });
 
@@ -55,4 +73,17 @@ function displayError(error) {
     showConfirmButton: false,
     timer: 2500,
   });
+}
+
+// make post request to backend
+async function makePostRequest(url, data_to_send) {
+  let response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data_to_send),
+  });
+
+  let data = await response.json();
+
+  return data;
 }

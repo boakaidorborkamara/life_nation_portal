@@ -15,7 +15,6 @@ signup_form.addEventListener("submit", async (e) => {
     }
 
     let result = await makePostRequest("/signup", signup_info);
-    console.log("result", result);
 
     if (result.status === "success" && result.code === 0) {
       Swal.fire({
