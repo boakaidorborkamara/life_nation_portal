@@ -20,7 +20,10 @@
       <!--  Sidebar End -->
 
       <!--  Main wrapper -->
-      <div class="body-wrapper">
+      <div
+        class="body-wrapper"
+        style="background-color: rgba(52, 52, 52, 0.109)"
+      >
         <!--  Header Start -->
         <%- include('./partials/dashboard-header') %>
         <!--  Header End -->
@@ -42,6 +45,8 @@
               href="/add-prayer-group"
               type="button"
               class="btn btn-dark col-lg-2 my-3"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
             >
               <span
                 ><svg
@@ -61,6 +66,135 @@
                   <path d="M5 12l14 0" /></svg></span
               ><span>START NEW GROUP</span>
             </a>
+
+            <!-- Add new group form Modal -->
+            <div
+              class="modal fade"
+              id="exampleModalCenter"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalCenterTitle"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3
+                      class="modal-title fw-bolder"
+                      id="exampleModalLongTitle"
+                    >
+                      Add New Group
+                    </h3>
+                    <button
+                      type="button"
+                      class="close px-2 pb-2"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="prayer-group-form">
+                      <!-- Group Name  -->
+                      <div class="mb-3">
+                        <label for="group-name" class="form-label"
+                          >Group Name</label
+                        >
+                        <input
+                          type="text"
+                          name="name"
+                          class="form-control"
+                          id="group-name"
+                          required
+                          aria-describedby="textHelp"
+                        />
+                      </div>
+
+                      <!-- Description  -->
+                      <div class="mb-3">
+                        <label for="description" class="form-label"
+                          >Description</label
+                        >
+
+                        <textarea
+                          name="description"
+                          class="form-control"
+                          required
+                          id="description"
+                        ></textarea>
+                      </div>
+
+                      <!-- Prayer Region  -->
+                      <div class="mb-3">
+                        <label for="prayer-region" class="form-label"
+                          >Group Region</label
+                        >
+
+                        <select
+                          name="region"
+                          class="form-select"
+                          id="prayer-region"
+                        >
+                          <option value="default" selected disabled>
+                            Select Region
+                          </option>
+                          <option value="Paynesville">Paynesville</option>
+                          <option value="Barnersville">Barnersville</option>
+                          <option value="Sinkor">Sinkor</option>
+                          <option value="Old Road">Old Road</option>
+                        </select>
+                      </div>
+
+                      <!-- Community  -->
+                      <div class="mb-3">
+                        <label for="community" class="form-label"
+                          >Community</label
+                        >
+                        <input
+                          type="text"
+                          name="community"
+                          class="form-control"
+                          required
+                          id="community"
+                          aria-describedby="textHelp"
+                        />
+                      </div>
+
+                      <!-- WhatsApplink  -->
+                      <div class="mb-3">
+                        <label for="whatsapp" class="form-label"
+                          >WhatsApp Invite Link</label
+                        >
+                        <input
+                          type="url"
+                          name="whatsapp_link"
+                          required
+                          class="form-control"
+                          id="whatsapp"
+                          aria-describedby="textHelp"
+                        />
+                      </div>
+
+                      <input
+                        type="submit"
+                        class="btn btn-success w-100 py-8 fs-4 mb-4 rounded-2"
+                        value="CREATE GROUP"
+                      />
+                      <div
+                        class="d-flex align-items-center justify-content-center"
+                      >
+                        <a
+                          class="text-danger fw-bold ms-2"
+                          href="/prayer-groups"
+                          >Cancel</a
+                        >
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- sort groups  -->
@@ -97,6 +231,7 @@
                 style="background-color: rgb(240, 240, 240) !important"
               >
                 <div class="card-body">
+                  f
                   <div
                     class="d-lg-flex align-items-center justify-content-between pb-4"
                   >
