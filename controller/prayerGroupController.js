@@ -39,9 +39,33 @@ const addPrayerGroup = async (req, res) => {
 
   console.log("prayer", prayer_group_info);
 
+  // validate
+  if (
+    !prayer_group_info.name &&
+    !prayer_group_info.description &&
+    !prayer_group_info.region &&
+    !prayer_group_info.whatsapp_link
+  ) {
+    return res.status(403).json({
+      code: 1,
+      status: "error",
+      message: "Required Fields Missing",
+      detail: "Please provide details for all of the required fields.",
+    });
+  }
+
   try {
-    let result = await prayerGroup.create(prayer_group_info);
-    console.log("result", result);
+    // add new group to database
+    let prayer_group_created = await prayerGroup.create(prayer_group_info);
+
+    if (prayer_group_created) {
+      res.status(201).json({
+        code: 0,
+        status: "success",
+        message: "Account created!",
+        data: prayer_group_created.dataValues,
+      });
+    }
   } catch (err) {
     console.log("err", err);
   }
