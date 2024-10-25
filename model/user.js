@@ -17,14 +17,14 @@ const User = sequelize.define(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
-    username: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-    },
     gender: {
       type: DataTypes.STRING(7),
       allowNull: true,
+    },
+    role: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
     },
     phone_number: {
       type: DataTypes.STRING,

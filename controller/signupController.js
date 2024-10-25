@@ -19,15 +19,27 @@ const displaySignUpForm = (req, res) => {
 
 // Create new user
 const createNewUser = async (req, res) => {
+  let admin_verification_pin = "LifeNation@5";
   let new_user_info = req.body;
   console.log("user info", new_user_info);
+
+  // check for correct verification pin from user
+  if (
+    new_user_info.role === "admin" &&
+    new_user_info.pin.trim() !== admin_verification_pin
+  ) {
+    return res
+      .status(403)
+      .json({ code: 1, status: "error", message: "Incorrect PIN" });
+  }
 
   // validate new_user_info
   if (
     !new_user_info.first_name ||
     !new_user_info.last_name ||
+    !new_user_info.gender ||
     !new_user_info.phone_number ||
-    !new_user_info.username ||
+    !new_user_info.role ||
     !new_user_info.password
   ) {
     return res

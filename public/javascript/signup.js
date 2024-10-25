@@ -140,36 +140,67 @@ dom.signup_form.addEventListener("submit", async (e) => {
 
   let signup_info = extractFormData(dom.signup_form);
 
+  // format signup info
+  // delete admin verification pin when user select member as their prefer role
+  if (signup_info.role === "member") {
+    delete signup_info.pin;
+  }
+
+  // extract first name and last name from full name
+  if (signup_info.full_name) {
+    let full_name_array = signup_info.full_name.split(" ");
+
+    if (full_name_array.length === 2) {
+      // extract first and last names if user didn't provide a middle name
+      signup_info["first_name"] = full_name_array[0];
+      signup_info["last_name"] = full_name_array[1];
+    } else if (full_name_array.length === 3) {
+      // extract first and last names if user provided a middle name
+      signup_info["first_name"] = full_name_array[0];
+      signup_info["last_name"] = full_name_array[2];
+    }
+
+    // delete full name field from signup_info
+    delete signup_info.full_name;
+  }
+
   console.log("signup_info", signup_info);
 
-  //   validate signup info
-  // let isInvalid = validateSignupDetails(dom);
+  try {
+    let result = await makePostRequest("/signup", signup_info);
 
-  // try {
-  //   if (isInvalid.status === true) {
-  //     displayError(isInvalid);
-  //     return;
-  //   }
+    console.log("result", result);
+    if (result.status === "success" && result.code === 0) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `${"Success"}`,
+        text: `${"Account created successfully!"}`,
+        showConfirmButton: false,
+        timer: 3500,
+      });
 
-  //   let result = await makePostRequest("/signup", signup_info);
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 3500);
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `${result.message}`,
+        text: `${"Enter the correct PIN or choose Member to continue."}`,
+        showConfirmButton: false,
+        timer: 3500,
+      });
 
-  //   if (result.status === "success" && result.code === 0) {
-  //     Swal.fire({
-  //       position: "center",
-  //       icon: "success",
-  //       title: `${"Success"}`,
-  //       text: `${"Account created successfully!"}`,
-  //       showConfirmButton: false,
-  //       timer: 3500,
-  //     });
-
-  //     setTimeout(() => {
-  //       window.location.href = "/login";
-  //     }, 3500);
-  //   }
-  // } catch (err) {
-  //   console.log(err);
-  // }
+      setTimeout(() => {
+        dom.pin.value = " ";
+        dom.submit_btn.setAttribute("disabled", "true");
+      }, 3500);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // METHODS -----------------------------------------
