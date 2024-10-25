@@ -37,9 +37,7 @@
                       alt=""
                     /> -->
                     <h2>
-                      Prayer<span class="fw-bolder" style="color: #2f5c06"
-                        >Book</span
-                      >
+                      LIFE<span class="fw-bolder text-success">GROUPS</span>
                     </h2>
                   </a>
                   <p class="text-center">Create Your Account</p>
@@ -51,12 +49,26 @@
                       >
                       <input
                         type="text"
-                        name="firs_name"
+                        name="full_name"
                         class="form-control"
-                        id="first-name"
+                        id="full-name"
                         aria-describedby="textHelp"
-                        required
                       />
+                    </div>
+
+                    <!-- Gender  -->
+                    <div class="mb-3">
+                      <label for="gender" class="form-label">Gender</label>
+                      <select
+                        class="form-select"
+                        name="gender"
+                        aria-label="Default select example"
+                        id="gender"
+                      >
+                        <option selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                     </div>
 
                     <!-- Phone -->
@@ -74,19 +86,6 @@
                       />
                     </div>
 
-                    <!-- Username -->
-                    <div class="mb-3">
-                      <label for="username" class="form-label">Username</label>
-                      <input
-                        type="text"
-                        name="username"
-                        class="form-control"
-                        id="username"
-                        aria-describedby="emailHelp"
-                        required
-                      />
-                    </div>
-
                     <!-- Password  -->
                     <div class="mb-4">
                       <label for="password" class="form-label">Password</label>
@@ -95,12 +94,52 @@
                         name="password"
                         class="form-control"
                         id="password"
-                        required
                       />
                     </div>
+
+                    <!-- Role  -->
+                    <div class="mb-3">
+                      <span class="me-4">
+                        <input
+                          type="radio"
+                          name="role"
+                          value="member"
+                          id="member"
+                        />
+                        <label for="member" class="form-label">Member</label>
+                      </span>
+
+                      <span>
+                        <input
+                          type="radio"
+                          name="role"
+                          value="admin"
+                          id="admin"
+                        />
+                        <label for="admin" class="form-label">Admin</label>
+                      </span>
+                    </div>
+
+                    <!-- PIN -->
+                    <div class="mb-3 d-none" id="pin-container">
+                      <label for="pin" class="form-label"
+                        >Verification PIN</label
+                      >
+                      <input
+                        type="text"
+                        name="pin"
+                        class="form-control"
+                        id="pin"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+
+                    <!-- submit btn  -->
                     <input
                       type="submit"
-                      class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2"
+                      disabled
+                      id="submit-btn"
+                      class="btn btn-success w-100 py-8 fs-4 mb-4 rounded-2"
                       value="Register"
                     />
 
