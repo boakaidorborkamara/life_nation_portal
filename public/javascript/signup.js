@@ -114,6 +114,9 @@ dom.signup_form.addEventListener("change", (e) => {
   ) {
     // check if user selected admin as their prefer role
     if (form_data.role === "admin") {
+      // diable submit btn if active
+      dom.submit_btn.setAttribute("disabled", "true");
+
       // check if pin field value was provided
       if (form_data.pin !== "") {
         // check error
