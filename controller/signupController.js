@@ -7,10 +7,15 @@ const displaySignUpForm = (req, res) => {
 };
 
 //Get all users
-// const getAllUser = (req, res) => {
-//   res.send("People list not implemented");
-//   // User.getAllUser()
-// };
+const getAllUser = async (req, res) => {
+  try {
+    let users = await User.findAll();
+    console.log("users", users);
+    res.status(200).json(users);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 //Get one User
 // const getOneUser = (req, res) => {
@@ -73,4 +78,5 @@ const createNewUser = async (req, res) => {
 module.exports = {
   displaySignUpForm,
   createNewUser,
+  getAllUser,
 };

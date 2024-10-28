@@ -1,6 +1,9 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../db-config/database");
 
+// user model
+const User = require("./user");
+
 const PrayerGroup = sequelize.define(
   "PrayerGroup",
   {
@@ -34,8 +37,16 @@ const PrayerGroup = sequelize.define(
   }
 );
 
+// Declear a one to many relationship between user and group with foreign key store in group table
+User.hasMany(PrayerGroup, {
+  foreignKey: {
+    allowNull: true,
+  },
+});
+PrayerGroup.belongsTo(User);
+
 //create a table from model
-PrayerGroup.sync().then(() => {
+PrayerGroup.sync({ force: false }).then(() => {
   console.log("Prayer Group table sucessfully created");
 });
 

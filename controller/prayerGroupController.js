@@ -4,9 +4,11 @@ const prayerGroup = require("../model/prayer-group");
 // display all prayer groups page
 const displayPrayerGroupsPage = async (req, res) => {
   try {
-    console.log("working");
-    let prayer_groups = await prayerGroup.findAll();
-    console.log("prayer groups", prayer_groups);
+    let prayer_groups = await prayerGroup.findAll({
+      include: "User",
+      required: true,
+      raw: true,
+    });
 
     res.render("../view/groups", {
       link: "/prayer-groups",
@@ -19,9 +21,14 @@ const displayPrayerGroupsPage = async (req, res) => {
 
 // display prayer group details
 const displayPrayerGroupsDetails = async (req, res) => {
+  let group_id = req.params.id;
+  console.log("group id", group_id);
   try {
+    let prayer_group_details = await prayerGroup.findByPk(group_id);
+    console.log(prayer_group_details);
     res.render("../view/prayer-group-details", {
       link: "/prayer-groups",
+      prayer_group_details: prayer_group_details,
     });
   } catch (err) {
     console.log(err);
@@ -37,6 +44,10 @@ const displayPrayerGroupsForm = (req, res) => {
 const addPrayerGroup = async (req, res) => {
   let prayer_group_info = req.body;
 
+  // baafbaf1-9350-4737-b019-9ec8db39acc1
+  // 09b6151b-6285-41ac-bfb1-e36dc0055051
+  prayer_group_info["UserId"] = "baafbaf1-9350-4737-b019-9ec8db39acc1";
+
   console.log("prayer", prayer_group_info);
 
   // validate
@@ -44,7 +55,8 @@ const addPrayerGroup = async (req, res) => {
     !prayer_group_info.name &&
     !prayer_group_info.description &&
     !prayer_group_info.region &&
-    !prayer_group_info.whatsapp_link
+    !prayer_group_info.whatsapp_link &&
+    !prayerGroup.UserId
   ) {
     return res.status(403).json({
       code: 1,

@@ -3,12 +3,6 @@ const displayLoginForm = (req, res) => {
   res.render("../view/login");
 };
 
-//Get all users
-// const getAllUser = (req, res) => {
-//   res.send("People list not implemented");
-//   // User.getAllUser()
-// };
-
 //Get one User
 // const getOneUser = (req, res) => {
 //   res.send("People detail not implemented.");

@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../db-config/database");
 
+// user model
 const User = sequelize.define(
   "User",
   {
@@ -23,7 +24,6 @@ const User = sequelize.define(
     },
     role: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
     },
     phone_number: {
@@ -40,7 +40,7 @@ const User = sequelize.define(
 );
 
 //create a table from model
-User.sync({ force: true }).then(() => {
+User.sync({ force: false }).then(() => {
   console.log("User table sucessfully created");
 });
 

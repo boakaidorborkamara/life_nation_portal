@@ -5,6 +5,8 @@ const cors = require("cors");
 
 const path = require("path");
 
+const LocalStrategy = require("passport-local");
+
 // create an express app
 const app = express();
 
@@ -22,9 +24,6 @@ app.use(express.static("public"));
 
 // connect to database and create tables from models
 const db = require("./db-config/database");
-const people_table = require("./model/people");
-const prayer_schedule_table = require("./model/prayer_schedule");
-const attendance_table = require("./model/attendance");
 
 //ROUTES
 const homepage_router = require("./route/homepage_router");

@@ -29,40 +29,26 @@
         <div class="container-fluid">
           <!-- About  -->
           <div>
-            <h1 class="fw-bolder">About Prayer Group</h1>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
-            </p>
+            <h1 class="fw-bolder"><%= prayer_group_details.name %></h1>
+            <p><%=prayer_group_details.description%></p>
 
             <div class="py-4">
               <small class="muted me-3"
-                ><strong>Created By:</strong> Boakai Dobor Kamara</small
+                ><strong>Group Admin:</strong> Boakai Dobor Kamara</small
               >
-              <small class="muted me-3"
-                ><strong>Group Region: </strong>Lofa</small
-              >
-              <small class="muted me-3"
-                ><strong>Community:</strong> GSA Road</small
-              >
+
               <small class="muted"><strong>Members Count:</strong> 10</small>
             </div>
 
             <div class="row">
               <div class="col-lg-4">
-                <button type="button" class="btn btn-outline-success me-3 my-2">
+                <a href="/prayer-groups">
+                  <button type="button" class="btn btn-dark me-3 my-3">
+                    BACK TO GROUPS
+                  </button>
+                </a>
+                <button type="button" class="btn btn-success me-3 my-3">
                   JOIN GROUP
-                </button>
-                <button type="button" class="btn btn-dark me-3 my-3">
-                  OPEN GROUP
                 </button>
               </div>
             </div>

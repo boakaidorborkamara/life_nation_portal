@@ -2,6 +2,7 @@
 <html lang="en">
   <!-- head starts  -->
   <%- include('./partials/dashboard-head') %>
+  
   <!-- head ends  -->
 
   <body>
@@ -20,54 +21,15 @@
       <!--  Sidebar End -->
 
       <!--  Main wrapper -->
-      <div
-        class="body-wrapper"
-        style="background-color: rgba(52, 52, 52, 0.109)"
-      >
+      <div class="body-wrapper">
         <!--  Header Start -->
         <%- include('./partials/dashboard-header') %>
         <!--  Header End -->
 
         <!-- page content  -->
         <div class="container-fluid">
-          <!-- search bar  -->
-          <div class="row px-2 py-5 bg-dark rounded">
-            <div class="col-lg-10 my-3">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search for groups..."
-                aria-label="Search"
-              />
-            </div>
 
-            <a
-              href="/add-prayer-group"
-              type="button"
-              class="btn btn-dark col-lg-2 my-3"
-              data-toggle="modal"
-              data-target="#exampleModalCenter"
-            >
-              <span
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 5l0 14" />
-                  <path d="M5 12l14 0" /></svg></span
-              ><span>START NEW GROUP</span>
-            </a>
-
-            <!-- Add new group form Modal -->
+          <!-- Add new group form Modal -->
             <div
               class="modal fade"
               id="exampleModalCenter"
@@ -195,7 +157,50 @@
                 </div>
               </div>
             </div>
+
+        <!-- display groups if page is render with groups data  -->
+          <% if (prayer_groups && prayer_groups.length > 0) { %>
+
+          <!-- search bar  -->
+          <div class="row px-2  rounded">
+            <!-- <div class="col-lg-10 my-3">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search for groups..."
+                aria-label="Search"
+              />
+            </div> -->
+
+            <a
+              href="/add-prayer-group"
+              type="button"
+              class="btn btn-success col-lg-2 my-3"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 5l0 14" />
+                  <path d="M5 12l14 0" /></svg></span
+              ><span>START NEW GROUP</span>
+            </a>
+
+            
           </div>
+          
 
           <!-- sort groups  -->
           <div class="d-flex justify-content-between mt-5 mb-2">
@@ -220,29 +225,23 @@
           </div>
 
           <!-- groups  -->
-          <% if (prayer_groups && prayer_groups.length > 0) { %>
+          
           <div class="mt-4">
             <% prayer_groups.forEach(function(group){ %>
 
             <!-- card  -->
             <div>
-              <div
-                class="card"
-                style="background-color: rgb(240, 240, 240) !important"
-              >
+              <div class="card bg-dark">
                 <div class="card-body">
-                  f
                   <div
                     class="d-lg-flex align-items-center justify-content-between pb-4"
                   >
                     <!-- group name  -->
-                    <h2 class="card-title fw-bolder"><%= group.name %></h2>
+                    <h1 class="fw-bolder card-title text-light">
+                      <%= group.name %>
+                    </h1>
 
                     <div class="">
-                      <small class="mb-2 text-muted me-4"
-                        ><strong>Region:</strong> <%= group.region %></small
-                      >
-
                       <small class="mb-2 text-muted me-4"
                         ><strong>Members Count:</strong>0</small
                       >
@@ -251,28 +250,32 @@
                   </div>
 
                   <div class="row">
-                    <p class="card-text col-lg-8"><%= group.description %></p>
-                    <div class="col-lg-4">
-                      <button
-                        type="button"
-                        class="btn btn-outline-success mx-lg-2"
-                      >
-                        JOIN GROUP
-                      </button>
-                      <button type="button" class="btn btn-dark mx-lg-2">
-                        OPEN GROUP
-                      </button>
-                    </div>
+                    <p class="card-text text-light col-lg-12">
+                      <span class="text-success">Group Description:</span>
+                      <br />
+                      <%= group.description %>
+                    </p>
                   </div>
 
-                  <div>
+                  <div class="mt-5">
                     <hr />
-                    <p>
-                      Created by:
-                      <a href="#" class="card-link text-success"
-                        >Boakai Dorbor Kamara</a
-                      >
-                    </p>
+                    <div
+                      class="d-lg-flex justify-content-between align-items-center"
+                    >
+                      <p>
+                        Created by:
+                        <a href="#" class="card-link text-muted"
+                          ><%= group['User.first_name'] + " " + group['User.last_name'] %></a
+                        >
+                      </p>
+                      <div>
+                        <a href=/prayer-groups/<%= group.id %>>
+                          <button type="button" class="btn btn-outline-success">
+                            OPEN GROUP
+                          </button>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -280,7 +283,46 @@
 
             <% }); %>
           </div>
+          <% } else{ %>  
+              <!-- else let user know that there's no group"  -->
+           <div class="text-center my-5 py-5">
+             <div>
+              <i class="bi bi-emoji-frown-fill text-muted" style="font-size: 15em;"></i>
+            </div>
+            <p class="text-muted">No Group</p>
+            <div>
+               <a
+              href="/add-prayer-group"
+              type="button"
+              class="btn btn-dark my-3"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M12 5l0 14" />
+                  <path d="M5 12l14 0" /></svg></span
+              ><span>START NEW GROUP</span>
+            </a>
+            </div> 
+           
+           </div>
           <% } %>
+
+          
+         
         </div>
       </div>
     </div>
