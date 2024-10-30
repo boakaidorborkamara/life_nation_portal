@@ -12,9 +12,15 @@ login_form.addEventListener("submit", async (e) => {
     return;
   }
 
-  return;
-  let result = await makePostRequest("/login", login_info);
+  let response = await fetch("/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(login_info),
+  });
 
+  // console.log(await response.json());
+
+  return;
   if (result.status === "success" && result.code === 0) {
     Swal.fire({
       position: "center",

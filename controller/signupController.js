@@ -9,7 +9,7 @@ const displaySignUpForm = (req, res) => {
 //Get all users
 const getAllUser = async (req, res) => {
   try {
-    let users = await User.findAll();
+    let users = await User.findAll({ raw: true });
     console.log("users", users);
     res.status(200).json(users);
   } catch (err) {

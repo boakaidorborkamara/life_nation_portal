@@ -2,10 +2,11 @@ const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const session = require("express-session");
+const SQLiteStore = require("connect-sqlite3")(session);
+const { passport, checkAuthenticated } = require("./middleware/passport");
 
 const path = require("path");
-
-const LocalStrategy = require("passport-local");
 
 // create an express app
 const app = express();
@@ -20,7 +21,17 @@ app.set("view engine", "ejs");
 const PORT = process.env.PORT || 3000;
 app.use(express.static("public"));
 
-// app.use(express.urlencoded({ extended: true }));
+// session
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: new SQLiteStore({ db: "portalDB.db", dir: "./" }),
+  })
+);
+
+app.use(passport.authenticate("session"));
 
 // connect to database and create tables from models
 const db = require("./db-config/database");
@@ -35,11 +46,6 @@ app.use(homepage_router);
 app.use(prayer_groups_router);
 app.use(signup_router);
 app.use(login_router);
-
-// app.use(thank_you_page);
-// app.use(people_router);
-// app.use(prayer_schedule_router);
-// app.use(user_router);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

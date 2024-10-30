@@ -1,14 +1,20 @@
 // IMPORT
+const { raw } = require("body-parser");
+const PrayerGroup = require("../model/prayer-group");
 const prayerGroup = require("../model/prayer-group");
 
 // display all prayer groups page
 const displayPrayerGroupsPage = async (req, res) => {
   try {
+    console.log("user", req.user);
+
     let prayer_groups = await prayerGroup.findAll({
       include: "User",
       required: true,
       raw: true,
     });
+
+    // console.log("prayer group", prayer_groups);
 
     res.render("../view/groups", {
       link: "/prayer-groups",
@@ -83,9 +89,32 @@ const addPrayerGroup = async (req, res) => {
   }
 };
 
+// join group
+const joinPrayerGroup = async (req, res) => {
+  console.log("join request", req.body);
+
+  let request_info = req.body;
+  let user_prefer_group = await PrayerGroup.findByPk(request_info.group_id, {
+    raw: true,
+  });
+
+  // check if members value is null
+  if (!user_prefer_group.members) {
+    user_prefer_group.members = [request_info.user_id];
+  } else {
+    if (user_prefer_group.members.includes(request_info.user_id) !== true) {
+      request_info.members = [user_prefer_group.members];
+      request_info.push(request_info.user_id);
+    }
+  }
+
+  console.log(user_prefer_group);
+};
+
 module.exports = {
   displayPrayerGroupsPage,
   displayPrayerGroupsForm,
   displayPrayerGroupsDetails,
   addPrayerGroup,
+  joinPrayerGroup,
 };

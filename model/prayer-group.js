@@ -3,6 +3,7 @@ const sequelize = require("../db-config/database");
 
 // user model
 const User = require("./user");
+const { toDefaultValue } = require("sequelize/lib/utils");
 
 const PrayerGroup = sequelize.define(
   "PrayerGroup",
@@ -30,6 +31,9 @@ const PrayerGroup = sequelize.define(
     },
     whatsapp_link: {
       type: DataTypes.STRING,
+    },
+    members: {
+      type: DataTypes.JSON,
     },
   },
   {

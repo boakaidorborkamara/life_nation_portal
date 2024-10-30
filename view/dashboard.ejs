@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head starts  -->
+  <%- include('./partials/dashboard-head') %>
+
+  <!-- head ends  -->
+
+  <body>
+    <!--  Body Wrapper -->
+    <div
+      class="page-wrapper"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+    >
+      <!-- Sidebar Start -->
+      <%- include('./partials/dashboard-sidebar') %>
+      <!--  Sidebar End -->
+
+      <!--  Main wrapper -->
+      <div class="body-wrapper">
+        <h1>dashboard</h1>
+      </div>
+    </div>
+    <!-- dashboard script starts  -->
+    <%- include('./partials/dashboard-script') %>
+    <!-- dashboard script ends  -->
+
+    <script src="/javascript/add-prayer-group.js"></script>
+
+    <!-- sweet alert  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
