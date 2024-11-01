@@ -6,7 +6,7 @@ const prayerGroup = require("../model/prayer-group");
 // display all prayer groups page
 const displayPrayerGroupsPage = async (req, res) => {
   try {
-    console.log("user", req.user);
+    console.log("userSSSS", req.user);
 
     let prayer_groups = await prayerGroup.findAll({
       include: "User",
@@ -52,7 +52,8 @@ const addPrayerGroup = async (req, res) => {
 
   // baafbaf1-9350-4737-b019-9ec8db39acc1
   // 09b6151b-6285-41ac-bfb1-e36dc0055051
-  prayer_group_info["UserId"] = "baafbaf1-9350-4737-b019-9ec8db39acc1";
+  let logged_in_user = req.user;
+  prayer_group_info["UserId"] = logged_in_user.id;
 
   console.log("prayer", prayer_group_info);
 

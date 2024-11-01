@@ -5,10 +5,9 @@ const User = require("../model/user");
 
 passport.use(
   new LocalStrategy(function (username, password, done) {
-    User.findAll({ where: { phone_number: username }, raw: true })
+    console.log("verifying user credential..");
+    User.findOne({ where: { phone_number: username }, raw: true })
       .then((user) => {
-        console.log(user);
-
         if (!user) {
           return done(null, false);
         }
@@ -27,19 +26,20 @@ passport.use(
 
 // store user data in session
 passport.serializeUser((user, done) => {
-  console.log("USER", user.id);
-
-  console.log("serialize user", user);
-  done(null, user.id);
+  console.log("serialize user", user.id);
+  done(null, { id: user.id });
 });
 
 // get user data out of session
-passport.deserializeUser(async (id, done) => {
+passport.deserializeUser(async (user, done) => {
+  console.log("deserialize user...");
+  let id = user.id;
+
   try {
     // find user based on provided id
-    let found_user = await User.findAll({ id: id });
+    let found_user = await User.findOne({ id: id, raw: true });
 
-    console.log("found", found_user);
+    // console.log("found", found_user);
 
     done(null, found_user);
   } catch (err) {
@@ -49,6 +49,8 @@ passport.deserializeUser(async (id, done) => {
 });
 
 function checkAuthenticated(req, res, next) {
+  console.log("authentiinng");
+  console.log("aut", req.isAuthenticated());
   if (req.isAuthenticated()) {
     // redirect user to dashboard if logged in but try visiting the homepage
     if (req.path === "/") {
@@ -56,6 +58,7 @@ function checkAuthenticated(req, res, next) {
     }
     return next();
   }
+
   res.redirect("/login");
 }
 

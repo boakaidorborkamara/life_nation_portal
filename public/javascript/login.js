@@ -18,21 +18,19 @@ login_form.addEventListener("submit", async (e) => {
     body: JSON.stringify(login_info),
   });
 
-  // console.log(await response.json());
+  let result = await response.json();
 
-  return;
-  if (result.status === "success" && result.code === 0) {
+  if (result.status === "OK" && result.code === 0) {
     Swal.fire({
       position: "center",
       icon: "success",
-      title: `${"Success"}`,
-      text: `${"Account created successfully!"}`,
+      title: `${"Login Successful"}`,
       showConfirmButton: false,
       timer: 3500,
     });
 
     setTimeout(() => {
-      window.location.href = "/login";
+      window.location.href = "/prayer-groups";
     }, 3500);
   }
 });

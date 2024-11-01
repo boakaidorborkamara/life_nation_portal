@@ -1,5 +1,9 @@
+const express = require("express");
+const router = express.Router();
+
 // allow logged in user to logout
-app.post("/logout", (req, res, next) => {
+router.post("/logout", (req, res, next) => {
+  console.log("logging out");
   // call logout method created by passport js middleware
   req.logout((err) => {
     if (err) {
@@ -10,3 +14,5 @@ app.post("/logout", (req, res, next) => {
     res.status(200).json({ status: "OK", code: 0, msg: "Logout successful" });
   });
 });
+
+module.exports = router;

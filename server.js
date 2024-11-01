@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const session = require("express-session");
 const SQLiteStore = require("connect-sqlite3")(session);
-const { passport, checkAuthenticated } = require("./middleware/passport");
+const { passport } = require("./middleware/passport");
 
 const path = require("path");
 
@@ -21,6 +21,9 @@ app.set("view engine", "ejs");
 const PORT = process.env.PORT || 3000;
 app.use(express.static("public"));
 
+// connect to database and create tables from models
+const db = require("./db-config/database");
+
 // session
 app.use(
   session({
@@ -33,14 +36,12 @@ app.use(
 
 app.use(passport.authenticate("session"));
 
-// connect to database and create tables from models
-const db = require("./db-config/database");
-
 //ROUTES
 const homepage_router = require("./route/homepage_router");
 const prayer_groups_router = require("./route/prayer-groups-router");
 const signup_router = require("./route/signup-router");
 const login_router = require("./route/login-router");
+const logout_router = require("./route/logout-router");
 
 app.use(homepage_router);
 app.use(prayer_groups_router);
