@@ -37,9 +37,9 @@ passport.deserializeUser(async (user, done) => {
 
   try {
     // find user based on provided id
-    let found_user = await User.findOne({ id: id, raw: true });
+    let found_user = await User.findOne({ where: { id: id }, raw: true });
 
-    // console.log("found", found_user);
+    console.log("found", found_user);
 
     done(null, found_user);
   } catch (err) {
