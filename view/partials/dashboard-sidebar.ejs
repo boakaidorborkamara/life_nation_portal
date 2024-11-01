@@ -47,10 +47,12 @@
               </li> -->
 
         <!-- prayer groups -->
-        <% if (link === "/prayer-groups") { %>
+        
+
+        <!-- Small Groups  -->
         <li class="sidebar-item mb-3">
           <a
-            class="sidebar-link bg-light text-dark"
+            class="sidebar-link  text-light  <% if (link === "/prayer-groups") { %> bg-light text-dark<% } %>"
             href="/prayer-groups"
             aria-expanded="false"
           >
@@ -69,12 +71,11 @@
             <span class="hide-menu">Small Groups</span>
           </a>
         </li>
-        <% } %>
 
         <!-- Testimonies  -->
         <li class="sidebar-item mb-3">
           <a
-            class="sidebar-link text-light"
+            class="sidebar-link text-light <% if (link === "/testimonies") { %> bg-light text-dark<% } %>"
             href="/testimonies"
             aria-expanded="false"
           >
@@ -99,11 +100,12 @@
           </a>
         </li>
 
+       
         <!-- Discussions  -->
         <li class="sidebar-item mb-3">
           <a
-            class="sidebar-link text-light"
-            href="/discussions"
+            class="sidebar-link text-light <% if (link === "/discussions") { %> bg-light text-dark<% } %>"
+            href=" /discussions"
             aria-expanded="false"
           >
             <span>
