@@ -5,7 +5,6 @@ document.addEventListener("click", async (e) => {
     let result = await makePostRequest("/logout", { msg: "logout" });
     console.log("resu", result);
 
-    return;
     if (result.status === "OK" && result.code === 0) {
       window.location.replace("/");
     }

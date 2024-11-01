@@ -51,7 +51,13 @@ app.use(prayer_groups_router);
 app.use(testimonies_router);
 app.use(discussions_router);
 app.use(login_router);
+app.use(logout_router);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
 });
+
+// change /prayer-groups to /small-groups
+// implement validation for signup, login & creation of groups
+// implement join groups
+// role base access
