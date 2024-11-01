@@ -41,6 +41,7 @@ const signup_router = require("./route/signup-router");
 const homepage_router = require("./route/homepage_router");
 const prayer_groups_router = require("./route/prayer-groups-router");
 const testimonies_router = require("./route/testimonies-router");
+const discussions_router = require("./route/discussion-router");
 const login_router = require("./route/login-router");
 const logout_router = require("./route/logout-router");
 
@@ -48,6 +49,7 @@ app.use(signup_router);
 app.use(homepage_router);
 app.use(prayer_groups_router);
 app.use(testimonies_router);
+app.use(discussions_router);
 app.use(login_router);
 
 app.listen(PORT, () => {

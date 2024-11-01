@@ -2,7 +2,7 @@
 
 // display all prayer groups page
 const displayDiscussionsPage = async (req, res) => {
-  res.render("../view/testimonies", { link: "discussions" });
+  res.render("../view/discussions", { link: "discussions" });
 };
 
 module.exports = {
