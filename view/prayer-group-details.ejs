@@ -25,21 +25,43 @@
         <%- include('./partials/dashboard-header') %>
         <!--  Header End -->
 
-        <!-- page content  -->
-        <div class="container-fluid">
-          <!-- About  -->
-          <div>
-            <h1 class="fw-bolder"><%= prayer_group_details.name %></h1>
-            <p><%=prayer_group_details.description%></p>
+        <div
+          class="container-fluid"
+          style="
+            height: 40vh;
+            background-image: linear-gradient(
+                rgba(0, 0, 5, 0.9),
+                rgba(0, 0, 0, 0.5)
+              ),
+              url(https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/445034769_757285919925731_2565895205701140277_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHpGFB2MnrpkQa7MA-g7RDjqZy7JQtURLapnLslC1REtvyBIBg9m25_ylQTjwp-zDvPK3WXMlu615bTQ40QDPA1&_nc_ohc=laToDKNNLv8Q7kNvgExCezO&_nc_zt=23&_nc_ht=scontent-bcn1-1.xx&_nc_gid=A5FmdPvHfJjHkAqnSUekIvv&oh=00_AYAbI5YEz_IIm04eY4vnbpW8HEuTqAzjYSQYzltmNzjnHg&oe=672EA402);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+          "
+          ;
+        >
+          <div class="d-flex flex-column justify-content-center">
+            <div>
+              <h1 class="text-light fw-bolder" style="font-size: 3em">
+                <%= prayer_group_details.name %>
+              </h1>
+              <p class="text-light"><%=prayer_group_details.description%></p>
+            </div>
 
             <div class="py-4">
-              <small class="muted me-3"
+              <small class="text-success me-3"
                 ><strong>Group Admin:</strong> Boakai Dobor Kamara</small
               >
 
-              <small class="muted"><strong>Members Count:</strong> 10</small>
+              <!-- <small class="muted"><strong>Members Count:</strong> 10</small> -->
             </div>
+          </div>
+        </div>
 
+        <!-- page content  -->
+        <div class="container-fluid" style="margin-top: -50px">
+          <!-- About  -->
+          <div>
             <div class="row">
               <div class="col-lg-4">
                 <a href="/prayer-groups">
