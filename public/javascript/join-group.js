@@ -3,15 +3,29 @@ document.addEventListener("click", async (e) => {
 
   if (clicked_ele.id === "join-group-btn") {
     let group_id = window.location.pathname.split("/")[2];
-    let user_id = "990kkl-0kkjk0-lkl7";
+
     console.log(group_id);
 
     let result = await makePostRequest(`/prayer-groups/${group_id}}/join`, {
       group_id,
-      user_id,
     });
 
     console.log("result", result);
+
+    if (result.code === 0 && result.status === "success") {
+      // Swal.fire({
+      //   title: "Click the Whatsapp Link to complete",
+      //   text: `${result.message}`,
+      //   icon: "info",
+      // });
+
+      Swal.fire({
+        icon: "success",
+        title: "Join us on WhatsApp",
+        text: `${result.message}`,
+        footer: `<a href="${result.data.whatsapp_link}" target="blank">${result.data.whatsapp_link}</a>`,
+      });
+    }
   }
 });
 

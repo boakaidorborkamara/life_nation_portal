@@ -14,7 +14,7 @@ const displayPrayerGroupsPage = async (req, res) => {
       raw: true,
     });
 
-    // console.log("prayer group", prayer_groups);
+    console.log("prayer group", prayer_groups);
 
     res.render("../view/groups", {
       link: "/prayer-groups",
@@ -94,10 +94,42 @@ const addPrayerGroup = async (req, res) => {
 const joinPrayerGroup = async (req, res) => {
   console.log("join request", req.body);
 
+  let user_id = req.user.id;
   let request_info = req.body;
-  let user_prefer_group = await PrayerGroup.findByPk(request_info.group_id, {
-    raw: true,
-  });
+  console.log("usid", user_id);
+
+  let user_prefer_group = await PrayerGroup.findByPk(request_info.group_id);
+
+  console.log("kdkd", user_prefer_group.members);
+  // get member field
+
+  // check if user is already part of the group they want to join
+  // if (user_prefer_group.members !== null) {
+  //   let isUserPartOfSelectedGroup = user_prefer_group.members.includes(user_id);
+
+  //   if (isUserPartOfSelectedGroup) {
+  //     console.log("user is part of the selected group");
+  //     return;
+  //   }
+  // }
+
+  let update_values =
+    user_prefer_group.members === null
+      ? [user_id]
+      : [...user_prefer_group.members, user_id];
+
+  let isUpdated = await user_prefer_group.update({ members: update_values });
+
+  if (isUpdated) {
+    res.status(200).json({
+      code: 0,
+      status: "success",
+      message: "Click the link below to complete",
+      data: user_prefer_group,
+    });
+  }
+
+  return;
 
   // check if members value is null
   if (!user_prefer_group.members) {
