@@ -20,6 +20,8 @@ dom.signup_form.addEventListener("change", (e) => {
   let changed_element = e.target;
   let changed_element_name = changed_element.name;
   let changed_element_value = changed_element.value;
+  let changed_element_value_count = changed_element_value.trim().length;
+  console.log(changed_element_value_count);
 
   // validate and display error message as user change values in the form
   if (changed_element_name === "full_name") {
@@ -62,7 +64,8 @@ dom.signup_form.addEventListener("change", (e) => {
         break;
     }
   } else if (changed_element_name === "phone_number") {
-    switch (changed_element_value.trim().length) {
+    console.log("changes ele is phone number");
+    switch (changed_element_value_count) {
       case 0:
         error.displayFormError(
           changed_element,
@@ -101,6 +104,29 @@ dom.signup_form.addEventListener("change", (e) => {
       default:
         error.hideFormError("role-error-text");
         break;
+    }
+  }
+
+  // validate phone number pattern
+  if (
+    changed_element_name === "phone_number" &&
+    changed_element_value_count > 0
+  ) {
+    console.log("string dey");
+    let user_phone_number = changed_element_value;
+    const liberianPhoneNumberPattern = /^(?:\+231|0)?\s?(77|88|55)\d{7}$/;
+    let isValidPhoneNumber = liberianPhoneNumberPattern.test(user_phone_number);
+
+    console.log(isValidPhoneNumber);
+
+    if (!isValidPhoneNumber) {
+      error.displayFormError(
+        changed_element,
+        "Enter a valid Liberian phone number.",
+        "phone-number-error-text"
+      );
+
+      return;
     }
   }
 
@@ -167,6 +193,7 @@ dom.signup_form.addEventListener("submit", async (e) => {
   console.log("signup_info", signup_info);
 
   try {
+    return;
     let result = await makePostRequest("/signup", signup_info);
 
     console.log("result", result);
