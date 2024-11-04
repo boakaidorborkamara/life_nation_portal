@@ -8,6 +8,7 @@ passport.use(
     console.log("verifying user credential..");
     User.findOne({ where: { phone_number: username }, raw: true })
       .then((user) => {
+        console.log("verifed user", user);
         if (!user) {
           return done(null, false);
         }

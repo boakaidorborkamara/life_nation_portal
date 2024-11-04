@@ -114,7 +114,7 @@ dom.signup_form.addEventListener("change", (e) => {
   ) {
     console.log("string dey");
     let user_phone_number = changed_element_value;
-    const liberianPhoneNumberPattern = /^(?:\+231|0)?\s?(77|88|55)\d{7}$/;
+    const liberianPhoneNumberPattern = /^(?:\0|0)?\s?(77|88|55)\d{7}$/;
     let isValidPhoneNumber = liberianPhoneNumberPattern.test(user_phone_number);
 
     console.log(isValidPhoneNumber);
@@ -122,7 +122,7 @@ dom.signup_form.addEventListener("change", (e) => {
     if (!isValidPhoneNumber) {
       error.displayFormError(
         changed_element,
-        "Enter a valid Liberian phone number.",
+        "Not a valid format, phone number must start with 0",
         "phone-number-error-text"
       );
 
@@ -193,10 +193,10 @@ dom.signup_form.addEventListener("submit", async (e) => {
   console.log("signup_info", signup_info);
 
   try {
-    return;
     let result = await makePostRequest("/signup", signup_info);
 
-    console.log("result", result);
+    // console.log("result", result);
+
     if (result.status === "success" && result.code === 0) {
       Swal.fire({
         position: "center",

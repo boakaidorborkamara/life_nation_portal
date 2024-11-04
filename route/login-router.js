@@ -7,9 +7,34 @@ const router = express.Router();
 
 router.get("/login", loginController.displayLoginForm);
 
-router.post("/login", passport.authenticate("local"), function (req, res) {
-  console.log("login successful");
-  res.json({ status: "OK", code: 0, message: "Login Successful" });
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+
+    // handle response if there's no user
+    if (!user) {
+      console.log("no user");
+      return res.json({
+        status: "OK",
+        code: 1,
+        message: "We couldn't find an account with those details.",
+      });
+    }
+
+    // log user in
+    req.logIn(user, (err) => {
+      console.log("uuuuuu", user);
+      if (err) {
+        return next(err);
+      }
+
+      if (user) {
+        res.json({ status: "OK", code: 0, message: "Login Successful" });
+      }
+    });
+  })(req, res, next);
 });
 
 // router.post("/login", function (req, res, next) {

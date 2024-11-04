@@ -19,12 +19,26 @@ login_form.addEventListener("submit", async (e) => {
   });
 
   let result = await response.json();
+  console.log("result", result);
 
   if (result.status === "OK" && result.code === 0) {
     Swal.fire({
       position: "center",
       icon: "success",
       title: `${"Login Successful"}`,
+      showConfirmButton: false,
+      timer: 3500,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/prayer-groups";
+    }, 3500);
+  } else if (result.status === "OK" && result.code === 1) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: `Invalid Details`,
+      text: `${result.message}`,
       showConfirmButton: false,
       timer: 3500,
     });
