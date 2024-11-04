@@ -21,13 +21,13 @@
       <!--  Sidebar End -->
 
       <!--  Main wrapper -->
-      <div class="body-wrapper">
+      <div class="body-wrapper" style="background-color: #F8F7F5;">
         <!--  Header Start -->
         <%- include('./partials/dashboard-header') %>
         <!--  Header End -->
 
         <!-- page content  -->
-        <div class="container-fluid" style="background-color: #D3D3D3;">
+        <div class="container-fluid" >
 
           <!-- Add new group form Modal -->
             <div
@@ -203,8 +203,8 @@
           
 
           <!-- sort groups  -->
-          <div class="d-flex justify-content-between mt-5 mb-2">
-            <h1>All Groups</h1>
+          <div class="d-flex justify-content-between mt-5 mb-5">
+            <h1 class="fw-bolder">All Groups</h1>
             <div class="dropdown">
               <button
                 class="btn border-0 dropdown-toggle"
@@ -236,7 +236,7 @@
                     class="d-lg-flex align-items-center justify-content-between pb-4"
                   >
                     <!-- group name  -->
-                    <h1 class="fw-bolder card-title text-light">
+                    <h1 class="fw-bolder card-title text-dark">
                       <%= group.name %>
                     </h1>
 
@@ -249,7 +249,7 @@
                   </div>
 
                   <div class="row">
-                    <p class="card-text text-light col-lg-12">
+                    <p class="card-text text-dark col-lg-12">
                       <span class="text-success">Group Description:</span>
                       <br />
                       <%= group.description %>
@@ -269,7 +269,7 @@
                       </p>
                       <div>
                         <a href=/prayer-groups/<%= group.id %>>
-                          <button type="button" class="btn btn-outline-success">
+                          <button type="button" class="btn btn-dark">
                             OPEN GROUP
                           </button>
                         </a>
