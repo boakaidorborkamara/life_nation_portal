@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 
 // enable usage of static file
 const PORT = process.env.PORT || 3000;
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // connect to database and create tables from models
 const db = require("./db-config/database");
