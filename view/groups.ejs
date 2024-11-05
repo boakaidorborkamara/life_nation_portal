@@ -244,7 +244,10 @@
                 />
               </div> -->
 
-              <a
+              
+              <!-- display add new group button only if logged in user is an admin  -->
+              <% if (user.role !== "member") { %>
+                <a
                 href="/add-prayer-group"
                 type="button"
                 class="btn btn-dark  my-3 shadow"
@@ -269,6 +272,7 @@
                     <path d="M5 12l14 0" /></svg></span
                 ><span>START NEW GROUP</span>
               </a>
+              <% } %>
 
               
             </div>
@@ -359,7 +363,26 @@
                                 
                                 </p>
                                 <div>
-                                  <a href=/prayer-groups/>
+
+
+                                  <% if (user.id === group.UserId) { %>
+                                  
+                                      <a href="/prayer-groups/" >
+                                      <button type="button" class="btn btn-dark">
+                                        ADD MEMBER
+                                      </button>
+                                    </a>
+                                    <a href="/prayer-groups/">
+                                      <button type="button" class="btn btn-secondary">
+                                        VIEW INFO
+                                      </button>
+                                    </a>
+                                    
+                                  <% } %>
+
+
+                                  
+                                  <a href="/prayer-groups/">
                                     <button type="button" class="btn btn-success">
                                       JOIN GROUP
                                     </button>
