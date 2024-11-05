@@ -7,13 +7,14 @@ const prayerGroup = require("../model/prayer-group");
 const displayPrayerGroupsPage = async (req, res) => {
   try {
     let logged_in_user = req.user;
-    console.log("lu", logged_in_user);
 
     let prayer_groups = await prayerGroup.findAll({
       include: "User",
       required: true,
       raw: true,
     });
+
+    console.log("lu", prayer_groups);
 
     res.render("../view/groups", {
       link: "/prayer-groups",
@@ -101,32 +102,45 @@ const joinPrayerGroup = async (req, res) => {
 
   let user_id = req.user.id;
   let request_info = req.body;
-  console.log("usid", user_id);
 
   let user_prefer_group = await PrayerGroup.findByPk(request_info.group_id);
 
-  console.log("kdkd", user_prefer_group.members);
-  // get member field
-
   // check if user is already part of the group they want to join
-  // if (user_prefer_group.members !== null) {
-  //   let isUserPartOfSelectedGroup = user_prefer_group.members.includes(user_id);
+  if (user_prefer_group.members !== null) {
+    let isUserPartOfSelectedGroup = user_prefer_group.members.includes(user_id);
 
-  //   if (isUserPartOfSelectedGroup) {
-  //     console.log("user is part of the selected group");
-  //     return;
-  //   }
-  // }
+    if (isUserPartOfSelectedGroup) {
+      console.log("user is part of the selected group");
+      return;
+    }
+  }
 
+  // check if user is part of any other prayer group
+  let groups = await PrayerGroup.findAll({ raw: true });
+  // console.log("grops", groups);
+  groups.forEach((group) => {
+    if (group.members.includes(user_id)) {
+      console.log("user is part of a group");
+
+      return res.status(403).json({
+        code: 1,
+        status: "error",
+        message: "Already a group member",
+        detail: `You are already part of ${group.name} & can not be added to another group.`,
+      });
+    }
+  });
+
+  return;
   let update_values =
-    user_prefer_group.members === null
+    user_prefer_group.members.length === 0
       ? [user_id]
       : [...user_prefer_group.members, user_id];
 
   let isUpdated = await user_prefer_group.update({ members: update_values });
 
   if (isUpdated) {
-    res.status(200).json({
+    return res.status(200).json({
       code: 0,
       status: "success",
       message: "Click the link below to complete",

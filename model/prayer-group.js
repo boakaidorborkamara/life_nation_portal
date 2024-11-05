@@ -42,6 +42,7 @@ const PrayerGroup = sequelize.define(
     },
     members: {
       type: DataTypes.JSON,
+      defaultValue: [],
     },
     members_count: {
       type: DataTypes.NUMBER,

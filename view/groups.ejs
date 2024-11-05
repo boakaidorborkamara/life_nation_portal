@@ -336,7 +336,7 @@
                 <th scope="col" class="fw-bolder text-nowrap">Main Address</th>
                 <th scope="col" class="fw-bolder">Community</th>
                 <th scope="col" class="fw-bolder">Contact</th>
-                <th scope="col" class="fw-bolder text-nowrap">Meeting Days</th>
+                <th scope="col" class="fw-bolder text-nowrap">Meeting Day & Time</th>
               </tr>
             </thead>
             <tbody>
@@ -344,7 +344,7 @@
                 <td scope="row"><%= group.address %></th>
                 <td><%= group.community %></td>
                 <td><%= group.contacts %></td>
-                <td>Wednesday @6:00pm</td>
+                <td><%= group.meeting_date %>  @<%= group.meeting_time %></td>
               </tr>
             
 
@@ -359,35 +359,65 @@
                                 class="d-lg-flex justify-content-between align-items-center"
                               >
                                 <p>
-                                  Created by: Boakai Kamara
+                                  Created by: <%= group['User.first_name']  %> <%= group['User.last_name']  %>
                                 
                                 </p>
-                                <div>
 
 
-                                  <% if (user.id === group.UserId) { %>
-                                  
-                                      <a href="/prayer-groups/" >
-                                      <button type="button" class="btn btn-dark">
-                                        ADD MEMBER
+                                <% if(group.members.includes(user.id)){ %>
+                                      <!-- --------------------- -->
+
+                                       <div>
+                                  <a href="<%= group.whatsapp_link %>" target="blank">
+                                      <button type="button" class="btn btn-success">
+                                         <i class="bi bi-whatsapp fs-4"></i> JOIN WHATSAPP
                                       </button>
                                     </a>
-                                    <a href="/prayer-groups/">
-                                      <button type="button" class="btn btn-secondary">
-                                        VIEW INFO
-                                      </button>
-                                    </a>
-                                    
-                                  <% } %>
-
-
-                                  
-                                  <a href="/prayer-groups/">
-                                    <button type="button" class="btn btn-success">
-                                      JOIN GROUP
-                                    </button>
-                                  </a>
                                 </div>
+
+
+                                      
+
+                                     <!-- ----------------------------- -->
+                                <% } else{ %>  
+                                   <div>
+
+
+                                        <% if (user.id === group.UserId) { %>
+                                        
+                                            <a href="/prayer-groups/" >
+                                            <button type="button" class="btn btn-dark">
+                                              ADD MEMBER
+                                            </button>
+                                          </a>
+                                          <a href="/prayer-groups/">
+                                            <button type="button" class="btn btn-secondary">
+                                              VIEW INFO
+                                            </button>
+                                          </a>
+                                          
+                                        <% } %>
+
+
+                                        <% if (user.id !== group.UserId) { %>
+                                        
+                                            
+                                          <button type="button" class="btn btn-success" id="join-group-btn" data-group-id="<%= group.id  %>">
+                                            JOIN GROUP
+                                          </button>
+                                      
+                                          
+                                        <% } %>
+                                        
+                                      
+                                      </div>
+                                <% } %>
+
+
+                               
+
+                                
+                              
                               </div>
                             </div>
                 </div>
@@ -447,6 +477,7 @@
     <!-- dashboard script ends  -->
 
     <script src="/javascript/add-prayer-group.js"></script>
+     <script src="/javascript/join-group.js"></script>
 
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
