@@ -11,7 +11,7 @@ add_prayer_group_form.addEventListener("submit", async (e) => {
 
   // }
 
-  console.log(prayer_group_info);
+  console.log("prayer group info", prayer_group_info);
 
   //   send data to backend
   let response = await fetch("/add-prayer-group", {

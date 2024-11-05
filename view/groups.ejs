@@ -50,7 +50,7 @@
                     </h3>
                     <button
                       type="button"
-                      class="close px-2 pb-2"
+                      class="close px-2 pb-2 text-danger"
                       data-dismiss="modal"
                       aria-label="Close"
                     >
@@ -62,7 +62,7 @@
                       <!-- Group Name  -->
                       <div class="mb-3">
                         <label for="group-name" class="form-label"
-                          >Group Name</label
+                          >Group Name <span class="text-danger">*</span></label
                         >
                         <input
                           type="text"
@@ -74,52 +74,105 @@
                         />
                       </div>
 
-                      <!-- Description  -->
+                       <!-- Community  -->
                       <div class="mb-3">
-                        <label for="description" class="form-label"
-                          >Description</label
-                        >
-
-                        <textarea
-                          name="description"
-                          class="form-control"
-                          required
-                          id="description"
-                        ></textarea>
-                      </div>
-
-                      <!-- Prayer Region  -->
-                      <div class="mb-3">
-                        <label for="prayer-region" class="form-label"
-                          >Group Region</label
+                        <label for="community" class="form-label"
+                          >Community <span class="text-danger">*</span></label
                         >
 
                         <select
-                          name="region"
+                          name="community"
                           class="form-select"
-                          id="prayer-region"
+                          id="community"
                         >
                           <option value="default" selected disabled>
-                            Select Region
+                            Select
                           </option>
-                          <option value="Paynesville">Paynesville</option>
-                          <option value="Barnersville">Barnersville</option>
-                          <option value="Sinkor">Sinkor</option>
-                          <option value="Old Road">Old Road</option>
+                          <option value="AB Tolbert Road">AB Tolbert Road</option>
+                          <option value="Police Academy Road">Police Academy Road</option>
+                          <option value="GSA Road Kisai camp first junction">GSA Road Kisai camp first junction </option>
+                          <option value="Old Road">Behind Benson Hospital</option>
+
+                          <option value="Paynesville">Duport Road, Paynesville</option>
+                          <option value="Barnersville">Mickie Gray Junction</option>
+                          <option value="Sinkor">SD Cooper Road </option>
+                          <option value="Old Road">Kpelleh Town </option>
+
+                          <option value="Barnersville">Zubah Town/Thinkers Village</option>
+                          <option value="Sinkor">Thinkersvillage  </option>
+                          <option value="Old Road">Rehab Community  </option>
+                          <option value="Barnersville">Scheiffelin town </option>
+                          <option value="Sinkor">Beverly Hills, Duazon </option>
+                          <option value="Old Road">Front Street, Monrovia  </option>
+
+                           <option value="Old Road">Lakpazee EJ hunter big school building   </option>
+                          <option value="Barnersville">Chugbor Road/ Smythe Road </option>
+                          <option value="Sinkor">72nd Junction </option>
+                          <option value="Old Road">Boulevard </option>
                         </select>
                       </div>
 
-                      <!-- Community  -->
+
+                     
+                       <!-- Address  -->
                       <div class="mb-3">
-                        <label for="community" class="form-label"
-                          >Community</label
+                        <label for="address" class="form-label"
+                          >Address <span class="text-danger">*</span></label
                         >
                         <input
                           type="text"
-                          name="community"
+                          name="address"
+                          class="form-control"
+                          id="address"
+                          required
+                          aria-describedby="textHelp"
+                        />
+                      </div>
+
+                      <!-- Contacts  -->
+                      <div class="mb-3">
+                        <label for="contacts" class="form-label"
+                          >Contacts <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          name="contacts"
                           class="form-control"
                           required
-                          id="community"
+                          id="contacts"
+                          aria-describedby="textHelp"
+                          placeholder="Ex: 0770322706, 0880526256"
+                        />
+                      </div>
+
+                    
+
+                       <!-- Meeting date  -->
+                      <div class="mb-3">
+                        <label for="meeting-date" class="form-label"
+                          >Meeting Date <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="date"
+                          name="meeting_date"
+                          class="form-control"
+                          required
+                          id="meeting-date"
+                          aria-describedby="textHelp"
+                        />
+                      </div>
+
+                       <!-- Meeting time  -->
+                      <div class="mb-3">
+                        <label for="meeting-time" class="form-label"
+                          >Meeting Time <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="time"
+                          name="meeting_time"
+                          class="form-control"
+                          required
+                          id="meeting-time"
                           aria-describedby="textHelp"
                         />
                       </div>
@@ -127,7 +180,7 @@
                       <!-- WhatsApplink  -->
                       <div class="mb-3">
                         <label for="whatsapp" class="form-label"
-                          >WhatsApp Invite Link</label
+                          >WhatsApp Group Link <span class="text-danger">*</span></label
                         >
                         <input
                           type="url"
@@ -136,6 +189,7 @@
                           class="form-control"
                           id="whatsapp"
                           aria-describedby="textHelp"
+                          value="https://wa.me/?text=urlencodedtext"
                         />
                       </div>
 
@@ -162,51 +216,64 @@
         <!-- display groups if page is render with groups data  -->
           <% if (prayer_groups && prayer_groups.length > 0) { %>
 
-          <!-- search bar  -->
-          <div class="row px-2  rounded">
-            <!-- <div class="col-lg-10 my-3">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search for groups..."
-                aria-label="Search"
-              />
-            </div> -->
-
-            <a
-              href="/add-prayer-group"
-              type="button"
-              class="btn btn-success col-lg-2 my-3 shadow"
-              data-toggle="modal"
-              data-target="#exampleModalCenter"
-            >
-              <span
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M12 5l0 14" />
-                  <path d="M5 12l14 0" /></svg></span
-              ><span>START NEW GROUP</span>
-            </a>
-
+          <!-- page header text -->
+          <div class="row px-2 d-flex justify-content-center align-items-center" style="height: 30vh;  background-image: linear-gradient(
+                rgba(0, 0, 5, 0.9),
+                rgba(0, 0, 0, 0.5)
+              ),
+              url(https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/445034769_757285919925731_2565895205701140277_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHpGFB2MnrpkQa7MA-g7RDjqZy7JQtURLapnLslC1REtvyBIBg9m25_ylQTjwp-zDvPK3WXMlu615bTQ40QDPA1&_nc_ohc=laToDKNNLv8Q7kNvgExCezO&_nc_zt=23&_nc_ht=scontent-bcn1-1.xx&_nc_gid=A5FmdPvHfJjHkAqnSUekIvv&oh=00_AYAbI5YEz_IIm04eY4vnbpW8HEuTqAzjYSQYzltmNzjnHg&oe=672EA402);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;">
+          
+            <h1 class="text-center text-light">Explore All Groups</h1>
             
           </div>
           
 
           <!-- sort groups  -->
-          <div class="d-flex justify-content-between mt-5 mb-5">
-            <h1 class="fw-bolder">All Groups</h1>
-            <div class="dropdown">
+          <div class="d-lg-flex justify-content-between mt-5 mb-5 ">
+             <!-- search bar  -->
+            <div class="row px-2  rounded ">
+              <!-- <div class="col-lg-10 my-3">
+                <input
+                  class="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Search for groups..."
+                  aria-label="Search"
+                />
+              </div> -->
+
+              <a
+                href="/add-prayer-group"
+                type="button"
+                class="btn btn-dark  my-3 shadow"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                <span
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 5l0 14" />
+                    <path d="M5 12l14 0" /></svg></span
+                ><span>START NEW GROUP</span>
+              </a>
+
+              
+            </div>
+
+            <div class="dropdown d-flex flex-column justify-content-center ">
               <button
                 class="btn border-0 dropdown-toggle"
                 type="button"
@@ -215,73 +282,99 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Filter by:
+                Filter by Address:
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">All Groups</a>
-                <a class="dropdown-item" href="#">Joined Groups</a>
+                <a class="dropdown-item" href="#">AB Tolbert Road</a>
+                <a class="dropdown-item" href="#">Police Academy Road</a>
+                <a class="dropdown-item" href="#">Boulevard </a>
+                <a class="dropdown-item" href="#">72nd Junction</a>
+                <a class="dropdown-item" href="#">Chugbor Road/ Smythe Road</a>
+                <a class="dropdown-item" href="#">Lakpazee EJ hunter big school building </a>
+                <a class="dropdown-item" href="#">Front Street, Monrovia </a>
+                <a class="dropdown-item" href="#">Beverly Hills, Duazon</a>
+                <a class="dropdown-item" href="#">Rehab Community </a>
+
               </div>
             </div>
           </div>
 
           <!-- groups  -->
           
-          <div class="mt-4">
-            <% prayer_groups.forEach(function(group){ %>
+
+
+       
+
+
+          <div class="accordion" id="accordionExample">
+             <% prayer_groups.forEach(function(group, index){ %>
 
             <!-- card  -->
-            <div>
-              <div class="card shadow-lg" >
-                <div class="card-body">
-                  <div
-                    class="d-lg-flex align-items-center justify-content-between pb-4"
-                  >
-                    <!-- group name  -->
-                    <h1 class="fw-bolder card-title text-dark">
-                      <%= group.name %>
-                    </h1>
+            <div class="accordion-item mb-5 shadow-lg">
+              <h2 class="accordion-header" id="heading-<%= group.id %>">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= group.id %>" aria-expanded="true" aria-controls="collapse<%= group.id %>">
+                  <div>
+                    <h3 class="fw-bolder"><%= group.name %> </h3>
+                  
+                  <p><i class="bi bi-geo-alt-fill"></i>  <%= group.community %></p>
+                  </div>
+                </button>
+              </h2>
+              <div id="collapse<%= group.id %>" class="accordion-collapse collapse  <% if (index === 0 ) { %>
+  show
+<% } %>" aria-labelledby="heading<%= group.id %>" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <!-- <strong>Main Address:</strong> AB Tolbert Road, Behind Life Church -->
+                  <div class="table-responsive">
+                      <table class="table table-hover ">
+            <thead>
+              <tr>
+                <th scope="col" class="fw-bolder text-nowrap">Main Address</th>
+                <th scope="col" class="fw-bolder">Community</th>
+                <th scope="col" class="fw-bolder">Contact</th>
+                <th scope="col" class="fw-bolder text-nowrap">Meeting Days</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row"><%= group.address %></th>
+                <td><%= group.community %></td>
+                <td><%= group.contacts %></td>
+                <td>Wednesday @6:00pm</td>
+              </tr>
+            
 
-                    <div class="">
-                      <small class="mb-2 text-muted me-4"
-                        ><strong>Members Count:</strong>0</small
-                      >
-                      <!-- <small class="mb-2 text-muted me-4">0 Posts</small> -->
-                    </div>
+            </tbody>
+          </table>
                   </div>
 
-                  <div class="row">
-                    <p class="card-text text-dark col-lg-12">
-                      <span class="text-success">Group Description:</span>
-                      <br />
-                      <%= group.description %>
-                    </p>
-                  </div>
 
-                  <div class="mt-5">
-                    <hr />
-                    <div
-                      class="d-lg-flex justify-content-between align-items-center"
-                    >
-                      <p>
-                        Created by:
-                        <a href="#" class="card-link text-muted"
-                          ><%= group['User.first_name'] + " " + group['User.last_name'] %></a
-                        >
-                      </p>
-                      <div>
-                        <a href=/prayer-groups/<%= group.id %>>
-                          <button type="button" class="btn btn-dark">
-                            OPEN GROUP
-                          </button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+          <div class="mt-4 container-fluid">
+                              <hr />
+                              <div
+                                class="d-lg-flex justify-content-between align-items-center"
+                              >
+                                <p>
+                                  Created by: Boakai Kamara
+                                
+                                </p>
+                                <div>
+                                  <a href=/prayer-groups/>
+                                    <button type="button" class="btn btn-success">
+                                      JOIN GROUP
+                                    </button>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
                 </div>
               </div>
             </div>
 
             <% }); %>
+
+            
+
           </div>
           <% } else{ %>  
               <!-- else let user know that there's no group"  -->

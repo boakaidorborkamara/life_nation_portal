@@ -50,6 +50,8 @@ const displayPrayerGroupsForm = (req, res) => {
 const addPrayerGroup = async (req, res) => {
   let prayer_group_info = req.body;
 
+  console.log(prayer_group_info);
+
   // baafbaf1-9350-4737-b019-9ec8db39acc1
   // 09b6151b-6285-41ac-bfb1-e36dc0055051
   let logged_in_user = req.user;
@@ -60,8 +62,11 @@ const addPrayerGroup = async (req, res) => {
   // validate
   if (
     !prayer_group_info.name &&
-    !prayer_group_info.description &&
-    !prayer_group_info.region &&
+    !prayer_group_info.community &&
+    !prayer_group_info.address &&
+    !prayer_group_info.contacts &&
+    !prayer_group_info.meeting_date &&
+    !prayer_group_info.meeting_time &&
     !prayer_group_info.whatsapp_link &&
     !prayerGroup.UserId
   ) {
@@ -81,7 +86,7 @@ const addPrayerGroup = async (req, res) => {
       res.status(201).json({
         code: 0,
         status: "success",
-        message: "Account created!",
+        message: "Group created!",
         data: prayer_group_created.dataValues,
       });
     }

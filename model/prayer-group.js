@@ -17,15 +17,23 @@ const PrayerGroup = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    region: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     community: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    contacts: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    meeting_date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    meeting_time: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -34,6 +42,15 @@ const PrayerGroup = sequelize.define(
     },
     members: {
       type: DataTypes.JSON,
+    },
+    members_count: {
+      type: DataTypes.NUMBER,
+      defaultValue: 0,
+    },
+
+    limit_reached: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     },
   },
   {
