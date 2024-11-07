@@ -131,7 +131,7 @@ const joinPrayerGroup = async (req, res) => {
     }
   });
 
-  return;
+  // return;
   let update_values =
     user_prefer_group.members.length === 0
       ? [user_id]
