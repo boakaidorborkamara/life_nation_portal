@@ -215,7 +215,7 @@ dom.signup_form.addEventListener("submit", async (e) => {
         position: "center",
         icon: "error",
         title: `${result.message}`,
-        text: `${"Enter the correct PIN or choose Member to continue."}`,
+        text: `${"Check & try again or contact Admin"}`,
         showConfirmButton: false,
         timer: 3500,
       });

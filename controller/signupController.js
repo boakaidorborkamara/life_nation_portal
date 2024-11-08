@@ -1,4 +1,5 @@
 // IMPORT
+const { where } = require("sequelize");
 const User = require("../model/user");
 
 // display signup form
@@ -27,6 +28,22 @@ const createNewUser = async (req, res) => {
   let admin_verification_pin = "LifeNation@5";
   let new_user_info = req.body;
   console.log("user info", new_user_info);
+
+  // check if user is already in db
+  let isUserInDB = await User.findOne({
+    where: { phone_number: new_user_info.phone_number },
+  });
+
+  console.log(isUserInDB);
+
+  // return;
+  if (isUserInDB) {
+    return res.status(403).json({
+      code: 1,
+      status: "error",
+      message: "Phone number already in use by another user",
+    });
+  }
 
   // check for correct verification pin from user
   if (

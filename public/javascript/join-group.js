@@ -21,14 +21,16 @@ document.addEventListener("click", async (e) => {
       //   icon: "info",
       // });
 
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
+
       Swal.fire({
         icon: "success",
         title: "Join us on WhatsApp",
         text: `${result.message}`,
         footer: `<a href="${result.data.whatsapp_link}" target="blank">${result.data.whatsapp_link}</a>`,
       });
-
-      // location.reload();
     }
 
     // handle error response
