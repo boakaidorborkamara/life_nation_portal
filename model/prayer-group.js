@@ -68,7 +68,7 @@ User.hasMany(PrayerGroup, {
 PrayerGroup.belongsTo(User);
 
 //create a table from model
-PrayerGroup.sync({ force: true }).then(() => {
+PrayerGroup.sync({ force: false }).then(() => {
   console.log("Prayer Group table sucessfully created");
 });
 

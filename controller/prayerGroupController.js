@@ -154,16 +154,16 @@ const joinPrayerGroup = async (req, res) => {
   return;
 
   // check if members value is null
-  if (!user_prefer_group.members) {
-    user_prefer_group.members = [request_info.user_id];
-  } else {
-    if (user_prefer_group.members.includes(request_info.user_id) !== true) {
-      request_info.members = [user_prefer_group.members];
-      request_info.push(request_info.user_id);
-    }
-  }
+  // if (!user_prefer_group.members) {
+  //   user_prefer_group.members = [request_info.user_id];
+  // } else {
+  //   if (user_prefer_group.members.includes(request_info.user_id) !== true) {
+  //     request_info.members = [user_prefer_group.members];
+  //     request_info.push(request_info.user_id);
+  //   }
+  // }
 
-  console.log(user_prefer_group);
+  // console.log(user_prefer_group);
 };
 
 module.exports = {

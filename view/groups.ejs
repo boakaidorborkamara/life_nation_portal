@@ -320,8 +320,8 @@
                   <div>
                     <h3 class="fw-bolder"><%= group.name %> </h3>
                   
-                    <% if(group.member_count === 15){ %>
-                          <p class="small"><i class="bi bi-bullseye text-danger me-2"></i>Reached Limit</p>
+                    <% if(group.members_count === 15){ %>
+                          <p class="small"><i class="bi bi-bullseye text-danger me-2"></i>Closed - Reached Limit</p>
                     <% } else{ %>  
                           <p class="small"><i class="bi bi-bullseye text-success me-2"></i>Accepting New Members</p>
                     <% } %>
@@ -329,7 +329,7 @@
                     
                   <p class="small"><i class="bi bi-geo-alt-fill me-2"></i>  <%= group.community %></p>
 
-                  <% if(group.member_count > 1){ %>
+                  <% if(group.members_count > 1){ %>
                           <p class="small"><i class="bi bi-person-badge me-2"></i>   <%= group.members_count %>  Members</p>
                   <% } else{ %>  
                           <p class="small"><i class="bi bi-person-badge me-2"></i>   <%= group.members_count %>  Member</p>
@@ -397,6 +397,7 @@
                                    <div>
 
 
+                                    <!-- check if the logged in user is the user who created a specific group  -->
                                         <% if (user.id === group.UserId) { %>
                                         
                                             <a href="/prayer-groups/" >
@@ -413,12 +414,22 @@
                                         <% } %>
 
 
+                                        <!-- check if the logged in user is not the same user who created a specific group -->
                                         <% if (user.id !== group.UserId) { %>
                                         
                                             
-                                          <button type="button" class="btn btn-success" id="join-group-btn" data-group-id="<%= group.id  %>">
-                                            JOIN GROUP
-                                          </button>
+                                         
+                                          <!-- show join group button if members count is not the group limit which is 15 members  -->
+
+                                           <% if(group.members_count !== 15){ %>
+                                                   <button type="button" class="btn btn-success" id="join-group-btn" data-group-id="<%= group.id  %>">
+                                                    JOIN GROUP
+                                                  </button>
+                                          <% } else{ %>  
+                                                   <button type="button" disabled class="btn btn-danger" id="join-group-btn" data-group-id="<%= group.id  %>">
+                                                    CLOSED
+                                                  </button>
+                                          <% } %>
                                       
                                           
                                         <% } %>
