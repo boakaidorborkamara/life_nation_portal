@@ -27,6 +27,8 @@ document.addEventListener("click", async (e) => {
         text: `${result.message}`,
         footer: `<a href="${result.data.whatsapp_link}" target="blank">${result.data.whatsapp_link}</a>`,
       });
+
+      // location.reload();
     }
 
     // handle error response

@@ -213,6 +213,27 @@
               </div>
             </div>
 
+          <!-- VIEW MEMBER MODAL -->
+          <div class="modal fade" id="viewMemberModal" tabindex="-1" role="dialog" aria-labelledby="viewMemberModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="viewMemberModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <!-- display groups if page is render with groups data  -->
           <% if (prayer_groups && prayer_groups.length > 0) { %>
 
@@ -405,11 +426,9 @@
                                               ADD MEMBER
                                             </button>
                                           </a>
-                                          <a href="/prayer-groups/">
-                                            <button type="button" class="btn btn-secondary">
-                                              VIEW INFO
+                                          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewMemberModal" id="view-group-member-btn">
+                                              VIEW MEMBERS
                                             </button>
-                                          </a>
                                           
                                         <% } %>
 
@@ -456,11 +475,19 @@
           </div>
           <% } else{ %>  
               <!-- else let user know that there's no group"  -->
-           <div class="text-center my-5 py-5">
+           
+              <div class="text-center my-5 py-5">
              <div>
               <i class="bi bi-emoji-frown-fill text-muted" style="font-size: 15em;"></i>
             </div>
             <p class="text-muted">No Group</p>
+
+
+
+            <!-- display option to start a new group only when logged in user is an admin  -->
+            <% if (user.role !== "member") { %>
+                
+              
             <div>
                <a
               href="/add-prayer-group"
@@ -490,6 +517,10 @@
             </div> 
            
            </div>
+
+              <% } %>
+
+
           <% } %>
 
           
@@ -503,6 +534,7 @@
 
     <script src="/javascript/add-prayer-group.js"></script>
      <script src="/javascript/join-group.js"></script>
+      <script src="/javascript/view-group-members.js"></script>
 
     <!-- sweet alert  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
