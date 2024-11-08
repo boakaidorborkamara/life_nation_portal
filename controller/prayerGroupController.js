@@ -137,7 +137,10 @@ const joinPrayerGroup = async (req, res) => {
       ? [user_id]
       : [...user_prefer_group.members, user_id];
 
-  let isUpdated = await user_prefer_group.update({ members: update_values });
+  let isUpdated = await user_prefer_group.update({
+    members: update_values,
+    members_count: (user_prefer_group.members.length += 1),
+  });
 
   if (isUpdated) {
     return res.status(200).json({

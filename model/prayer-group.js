@@ -51,7 +51,7 @@ const PrayerGroup = sequelize.define(
 
     limit_reached: {
       type: DataTypes.BOOLEAN,
-      defaultValue: true,
+      defaultValue: false,
     },
   },
   {
@@ -68,7 +68,7 @@ User.hasMany(PrayerGroup, {
 PrayerGroup.belongsTo(User);
 
 //create a table from model
-PrayerGroup.sync({ force: false }).then(() => {
+PrayerGroup.sync({ force: true }).then(() => {
   console.log("Prayer Group table sucessfully created");
 });
 
