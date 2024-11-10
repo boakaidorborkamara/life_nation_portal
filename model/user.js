@@ -40,7 +40,7 @@ const User = sequelize.define(
 );
 
 //create a table from model
-User.sync({ force: false }).then(() => {
+User.sync({ force: true }).then(() => {
   console.log("User table sucessfully created");
 });
 
