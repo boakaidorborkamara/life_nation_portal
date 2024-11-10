@@ -12,154 +12,8 @@ const dom = {
 // toggle verification field
 toggleVerificationField();
 
-dom.signup_form.addEventListener("change", (e) => {
-  let isError = false;
-  let form_data = extractFormData(dom.signup_form);
-
-  // info about changed element
-  let changed_element = e.target;
-  let changed_element_name = changed_element.name;
-  let changed_element_value = changed_element.value;
-  let changed_element_value_count = changed_element_value.trim().length;
-  console.log(changed_element_value_count);
-
-  // validate and display error message as user change values in the form
-  if (changed_element_name === "full_name") {
-    // amount of words entered in the full name field
-    let words_count_in_fullname = changed_element_value
-      .trim()
-      .split(" ").length;
-
-    switch (words_count_in_fullname) {
-      case 1:
-        isError = true;
-
-        // create error message
-        let error_message = "Please enter your fullname.";
-        // display error message
-        error.displayFormError(
-          changed_element,
-          error_message,
-          "full-name-error-text"
-        );
-
-        break;
-      default:
-        error.hideFormError("full-name-error-text");
-        break;
-    }
-  } else if (changed_element_name === "gender") {
-    let selected_gender = changed_element_value;
-    switch (changed_element_value) {
-      case "Select Gender":
-        error.displayFormError(
-          changed_element,
-          "Gender is required, choose your gender.",
-          "gender-error-text"
-        );
-        isError = true;
-        break;
-      default:
-        error.hideFormError("gender-error-text");
-        break;
-    }
-  } else if (changed_element_name === "phone_number") {
-    console.log("changes ele is phone number");
-    switch (changed_element_value_count) {
-      case 0:
-        error.displayFormError(
-          changed_element,
-          "Phone number is required",
-          "phone-number-error-text"
-        );
-        break;
-      default:
-        error.hideFormError("phone-number-error-text");
-        break;
-    }
-  } else if (changed_element_name === "password") {
-    switch (changed_element_value.trim().length) {
-      case 0:
-        error.displayFormError(
-          changed_element,
-          "Password is required",
-          "password-number-error-text"
-        );
-        break;
-      default:
-        error.hideFormError("password-error-text");
-        break;
-    }
-  } else if (changed_element_name === "role") {
-    console.log("role was clicked", changed_element_value);
-
-    switch (changed_element_value.trim().length) {
-      case 0:
-        error.displayFormError(
-          changed_element,
-          "Select a role.",
-          "role-error-text"
-        );
-        break;
-      default:
-        error.hideFormError("role-error-text");
-        break;
-    }
-  }
-
-  // validate phone number pattern
-  if (
-    changed_element_name === "phone_number" &&
-    changed_element_value_count > 0
-  ) {
-    console.log("string dey");
-    let user_phone_number = changed_element_value;
-    const liberianPhoneNumberPattern = /^(?:\0|0)?\s?(77|88|55)\d{7}$/;
-    let isValidPhoneNumber = liberianPhoneNumberPattern.test(user_phone_number);
-
-    console.log(isValidPhoneNumber);
-
-    if (!isValidPhoneNumber) {
-      error.displayFormError(
-        changed_element,
-        "Not a valid format, phone number must start with 0",
-        "phone-number-error-text"
-      );
-
-      return;
-    }
-  }
-
-  // disabled or enable submit button based on the validation result
-  if (
-    form_data.full_name !== "" &&
-    form_data.gender !== "Select Gender" &&
-    form_data.phone_number !== "" &&
-    form_data.password !== "" &&
-    form_data.role !== ""
-  ) {
-    // check if user selected admin as their prefer role
-    if (form_data.role === "admin") {
-      // diable submit btn if active
-      dom.submit_btn.setAttribute("disabled", "true");
-
-      // check if pin field value was provided
-      if (form_data.pin !== "") {
-        // check error
-        if (isError === false) {
-          dom.submit_btn.removeAttribute("disabled");
-        }
-      }
-    } else if (form_data.role === "member") {
-      // check error
-      if (isError === false) {
-        dom.submit_btn.removeAttribute("disabled");
-      }
-    }
-  } else {
-    dom.submit_btn.setAttribute("disabled", "true");
-  }
-});
+dom.signup_form.addEventListener("keydown", handleSingUpValidation);
+// dom.signup_form.addEventListener("change", handleSingUpValidation);
 
 dom.signup_form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -273,6 +127,167 @@ function displayError(error) {
     showConfirmButton: false,
     timer: 2500,
   });
+}
+
+function handleSingUpValidation(e) {
+  let isError = false;
+  let form_data = extractFormData(dom.signup_form);
+
+  // info about changed element
+  let changed_element = e.target;
+  let changed_element_name = changed_element.name;
+  let changed_element_value = changed_element.value;
+  let changed_element_value_count = changed_element_value.trim().length;
+  console.log(changed_element_value_count);
+
+  // validate and display error message as user change values in the form
+  if (changed_element_name === "full_name") {
+    // amount of words entered in the full name field
+    let words_count_in_fullname = changed_element_value
+      .trim()
+      .split(" ").length;
+
+    switch (words_count_in_fullname) {
+      case 1:
+        isError = true;
+
+        // create error message
+        let error_message = "Please enter your fullname.";
+        // display error message
+        error.displayFormError(
+          changed_element,
+          error_message,
+          "full-name-error-text"
+        );
+
+        break;
+      default:
+        error.hideFormError("full-name-error-text");
+        break;
+    }
+  } else if (changed_element_name === "gender") {
+    let selected_gender = changed_element_value;
+    switch (changed_element_value) {
+      case "Select Gender":
+        error.displayFormError(
+          changed_element,
+          "Gender is required, choose your gender.",
+          "gender-error-text"
+        );
+        isError = true;
+        break;
+      default:
+        error.hideFormError("gender-error-text");
+        break;
+    }
+  } else if (changed_element_name === "phone_number") {
+    console.log("changes ele is phone number");
+    // if(changed_element_value_count === 0){
+
+    // }
+    switch (changed_element_value_count) {
+      case 0:
+        error.displayFormError(
+          changed_element,
+          "Phone number is required",
+          "phone-number-error-text"
+        );
+        break;
+      default:
+        error.hideFormError("phone-number-error-text");
+        break;
+    }
+  } else if (changed_element_name === "password") {
+    if (changed_element_value.trim().length === 0) {
+      error.displayFormError(
+        changed_element,
+        "Password is required",
+        "password-number-error-text"
+      );
+
+      return;
+    } else if (changed_element_value.trim().length < 2) {
+      error.displayFormError(
+        changed_element,
+        "Password should be more than two characters",
+        "password-number-error-text"
+      );
+    } else {
+      error.hideFormError("password-number-error-text");
+      console.log("hiding pw");
+    }
+  } else if (changed_element_name === "role") {
+    console.log("role was clicked", changed_element_value);
+
+    switch (changed_element_value.trim().length) {
+      case 0:
+        error.displayFormError(
+          changed_element,
+          "Select a role.",
+          "role-error-text"
+        );
+        break;
+      default:
+        error.hideFormError("role-error-text");
+        break;
+    }
+  }
+
+  // validate phone number pattern
+  if (
+    changed_element_name === "phone_number" &&
+    changed_element_value_count > 0
+  ) {
+    console.log("string dey");
+    let user_phone_number = changed_element_value;
+    const liberianPhoneNumberPattern = /^(?:\0|0)?\s?(77|88|55)\d{6}$/;
+    let isValidPhoneNumber = liberianPhoneNumberPattern.test(user_phone_number);
+
+    console.log(isValidPhoneNumber);
+
+    if (!isValidPhoneNumber) {
+      error.displayFormError(
+        changed_element,
+        "Not a valid format, phone number must start with 0",
+        "phone-number-error-text"
+      );
+
+      return;
+    } else if (isValidPhoneNumber) {
+      error.hideFormError("phone-number-error-text");
+      console.log("valid phone number");
+    }
+  }
+
+  // disabled or enable submit button based on the validation result
+  if (
+    form_data.full_name !== "" &&
+    form_data.gender !== "Select Gender" &&
+    form_data.phone_number !== "" &&
+    form_data.password !== "" &&
+    form_data.role !== ""
+  ) {
+    // check if user selected admin as their prefer role
+    if (form_data.role === "admin") {
+      // diable submit btn if active
+      dom.submit_btn.setAttribute("disabled", "true");
+
+      // check if pin field value was provided
+      if (form_data.pin !== "") {
+        // check error
+        if (isError === false) {
+          dom.submit_btn.removeAttribute("disabled");
+        }
+      }
+    } else if (form_data.role === "member") {
+      // check error
+      if (isError === false) {
+        dom.submit_btn.removeAttribute("disabled");
+      }
+    }
+  } else {
+    dom.submit_btn.setAttribute("disabled", "true");
+  }
 }
 
 // make post request to backend
