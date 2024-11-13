@@ -1,6 +1,8 @@
 // IMPORT
 const { where } = require("sequelize");
 const User = require("../model/user");
+const Groups = require("../model/prayer-group");
+const { raw } = require("body-parser");
 
 // display signup form
 const displaySignUpForm = (req, res) => {
@@ -11,8 +13,10 @@ const displaySignUpForm = (req, res) => {
 const getAllUser = async (req, res) => {
   try {
     let users = await User.findAll({ raw: true });
+    let groups = await Groups.findAll({ raw: true });
+
     console.log("users", users);
-    res.status(200).json(users);
+    res.status(200).json({ users: users, groups: groups });
   } catch (err) {
     console.log(err);
   }
