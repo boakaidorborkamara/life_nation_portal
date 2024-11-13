@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 // create db connection
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: "./portalDB.db",
+  storage: "./portalDB.sqlite",
 });
 
 sequelize

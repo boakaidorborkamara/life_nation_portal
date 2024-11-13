@@ -30,7 +30,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    store: new SQLiteStore({ db: "portalDB.db", dir: "./" }),
+    store: new SQLiteStore({ db: "portalDB.sqlite", dir: "./" }),
   })
 );
 
