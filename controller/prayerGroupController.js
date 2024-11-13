@@ -1,7 +1,9 @@
 // IMPORT
 const { raw } = require("body-parser");
+const { Op } = require("sequelize");
 const PrayerGroup = require("../model/prayer-group");
 const prayerGroup = require("../model/prayer-group");
+const User = require("../model/user");
 
 // display all prayer groups page
 const displayPrayerGroupsPage = async (req, res) => {
@@ -32,13 +34,39 @@ const displayPrayerGroupsDetails = async (req, res) => {
   console.log("group id", group_id);
   try {
     let prayer_group_details = await prayerGroup.findByPk(group_id);
-    console.log(prayer_group_details);
-    res.render("../view/prayer-group-details", {
-      link: "/prayer-groups",
-      prayer_group_details: prayer_group_details,
-    });
+
+    // console.log("grup details", prayer_group_details);
+
+    if (prayer_group_details && prayer_group_details.members.length > 0) {
+      console.log("ids", prayer_group_details.members);
+
+      members_ids = prayer_group_details.members;
+
+      let member_details = await User.findAll({
+        where: {
+          id: {
+            [Op.in]: members_ids,
+          },
+        },
+        raw: true,
+      });
+
+      console.log("member details", member_details);
+
+      prayer_group_details.members = member_details;
+    }
+
+    console.log("grup details", prayer_group_details);
+    // res.render("../view/prayer-group-details", {
+    //   link: "/prayer-groups",
+    //   prayer_group_details: prayer_group_details,
+    // });
+    res
+      .status(200)
+      .json({ code: 0, status: "success", data: prayer_group_details });
   } catch (err) {
     console.log(err);
+    res.status(500).json({ code: 1, status: "error", msg: "Error occured" });
   }
 };
 

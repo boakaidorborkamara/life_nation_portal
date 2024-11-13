@@ -263,18 +263,16 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="viewMemberModalLabel">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  <h5 class="modal-title fw-bolder" id="viewMemberModalLabel">Group Members</h5>
+                 
                 </div>
-                <div class="modal-body">
-                  ...
+                <div class="modal-body" id="modal-body">
+                  <!-- MODAL CONTENT HERE ....  -->
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -287,7 +285,7 @@
                 rgba(0, 0, 5, 0.9),
                 rgba(0, 0, 0, 0.5)
               ),
-              url(https://scontent-bcn1-1.xx.fbcdn.net/v/t39.30808-6/445034769_757285919925731_2565895205701140277_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHpGFB2MnrpkQa7MA-g7RDjqZy7JQtURLapnLslC1REtvyBIBg9m25_ylQTjwp-zDvPK3WXMlu615bTQ40QDPA1&_nc_ohc=laToDKNNLv8Q7kNvgExCezO&_nc_zt=23&_nc_ht=scontent-bcn1-1.xx&_nc_gid=A5FmdPvHfJjHkAqnSUekIvv&oh=00_AYAbI5YEz_IIm04eY4vnbpW8HEuTqAzjYSQYzltmNzjnHg&oe=672EA402);
+              url(https://gslcwi.com/wp-content/uploads/2019/10/prayerimage-1024x682.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;">
@@ -471,7 +469,7 @@
                                               ADD MEMBER
                                             </button>
                                           </a>
-                                          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#viewMemberModal" id="view-group-member-btn">
+                                          <button type="button" class="btn btn-secondary" id="view-group-member-btn" data-group-id="<%= group.id %>">
                                               VIEW MEMBERS
                                             </button>
                                           
