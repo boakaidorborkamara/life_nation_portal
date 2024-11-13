@@ -74,47 +74,6 @@
                         />
                       </div>
 
-
-                      <!-- Address  -->
-                      <div class="mb-3">
-                        <label for="address" class="form-label"
-                          >Main Address  <span class="text-danger">*</span></label
-                        >
-                         <select
-                          name="address"
-                          class="form-select"
-                          id="address"
-                        >
-                          <option value="default" selected disabled>
-                            Select
-                          </option>
-                          <option value="AB Tolbert Road, Behind Life Church">AB Tolbert Road, Behind Life Church</option>
-                          <option value="AB Tolbert Road, Opposite Life Church">AB Tolbert Road, Opposite Life Church </option>
-                          <option value="Police Academy">Police Academy</option>
-                          <option value="GSA Road">GSA Road</option>
-
-                          <option value="Duport Road">Duport Road</option>
-                          <option value="Mickie Gray Junction Duport Road">Mickie Gray Junction Duport Road</option>
-                          <option value="D Cooper Road, Paynesville City">SD Cooper Road, Paynesville City </option>
-                          <option value="ELWA ">ELWA </option>
-
-                          <option value="Zubah Town">Zubah Town</option>
-                          <option value="Thinkersvillage">Thinkersvillage, near Executive Inn</option>
-                          <option value="RLJ Road">RLJ Road</option>
-                          <option value="Duazon, Lower Margibi County ">Duazon, Lower Margibi County </option>
-                          <option value="Front Street, Monrovia ">Front Street, Monrovia </option>
-                          <option value="Lakpazee ">Lakpazee </option>
-
-                           <option value="Old Road, Opposite IPA ">Old Road, Opposite IPA</option>
-                          <option value="72nd Total Gas station">72nd Total Gas station</option>
-                          <option value="Swankamore Community">Swankamore Community</option>
-                          <option value="Barnesville">Barnesville</option>
-                          <option value="Congo Town">Congo Town</option>
-                          <option value="Johnsonville">Johnsonville</option>
-                        </select>
-                      </div>
-
-
                        <!-- Community  -->
                       <div class="mb-3">
                         <label for="community" class="form-label"
@@ -151,18 +110,51 @@
 
                            <option value="Lakpazee EJ hunter big school building ">Lakpazee EJ Hunter Big School Building   </option>
                           <option value="Chugbor Road/ Smythe Road">Chugbor Road/ Smythe Road </option>
-                          <option value="Behind Musu Spot">Behind Musu Spot</option>
                           <option value="72nd Junction">72nd Junction </option>
                           <option value="72nd">72nd </option>
                           <option value="Boulevard">Boulevard </option>
-                          
-                          <option value="Behind Benson Hospital">Behind Benson Hospital</option>
+                          <option value="Behind Musu Spot">Behind Musu Spot</option>
                         </select>
                       </div>
 
 
                      
-                       
+                       <!-- Address  -->
+                      <div class="mb-3">
+                        <label for="address" class="form-label"
+                          >Main Address  <span class="text-danger">*</span></label
+                        >
+                         <select
+                          name="address"
+                          class="form-select"
+                          id="address"
+                        >
+                          <option value="default" selected disabled>
+                            Select
+                          </option>
+                          <option value="AB Tolbert Road, Behind Life Church">AB Tolbert Road, Behind Life Church</option>
+                          <option value="AB Tolbert Road, Opposite Life Church">AB Tolbert Road, Opposite Life Church </option>
+                          <option value="Police Academy">Police Academy</option>
+                          <option value="GSA Road">GSA Road</option>
+
+                          <option value="Duport Road">Duport Road</option>
+                          <option value="Mickie Gray Junction Duport Road">Mickie Gray Junction Duport Road</option>
+                          <option value="D Cooper Road, Paynesville City">SD Cooper Road, Paynesville City </option>
+                          <option value="ELWA ">ELWA </option>
+
+                          <option value="Zubah Town">Zubah Town</option>
+                          <option value="Thinkersvillage">Thinkersvillage, near Executive Inn</option>
+                          <option value="RLJ Road">RLJ Road</option>
+                          <option value="Duazon, Lower Margibi County ">Duazon, Lower Margibi County </option>
+                          <option value="Front Street, Monrovia ">Front Street, Monrovia </option>
+                          <option value="Lakpazee ">Lakpazee </option>
+
+                           <option value="Old Road, Opposite IPA ">Old Road, Opposite IPA</option>
+                          <option value="72nd Total Gas station">72nd Total Gas station</option>
+                          <option value="Swankamore Community">Swankamore Community</option>
+                          <option value="Congo Town">Congo Town</option>
+                        </select>
+                      </div>
 
                       <!-- Contacts  -->
                       <div class="mb-3">
@@ -187,24 +179,14 @@
                         <label for="meeting-date" class="form-label"
                           >Meeting Day <span class="text-danger">*</span></label
                         >
-                        <select
+                        <input
+                          type="date"
                           name="meeting_date"
-                          class="form-select"
-                          id="address"
-                        >
-                          <option value="default" selected disabled>
-                            Select
-                          </option>
-                          <option value="Sunday">Sunday</option>
-                          <option value="Monday">Monday</option>
-                          <option value="Tuesday">Tuesday</option>
-                          <option value="Wednesday">Wednesday</option>
-
-                          <option value="Thursday">Thursday</option>
-                          <option value="Friday">Friday</option>
-                          <option value="Saturday">Saturday</option>
-                          
-                        </select>
+                          class="form-control"
+                          required
+                          id="meeting-date"
+                          aria-describedby="textHelp"
+                        />
                       </div>
 
                        <!-- Meeting time  -->
@@ -384,7 +366,7 @@
               <h2 class="accordion-header" id="heading-<%= group.id %>">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= group.id %>" aria-expanded="true" aria-controls="collapse<%= group.id %>">
                   <div>
-                    <h3 class="fw-bolder"><%= group.name %> - <%= group.community %> </h3>
+                    <h3 class="fw-bolder"><%= group.name %> </h3>
                   
                     <% if(group.members_count === 15){ %>
                           <p class="small"><i class="bi bi-bullseye text-danger me-2"></i>Closed - Reached Limit</p>
@@ -393,7 +375,7 @@
                     <% } %>
 
                     
-                  <p class="small"><i class="bi bi-geo-alt-fill me-2"></i>  <%= group.address %></p>
+                  <p class="small"><i class="bi bi-geo-alt-fill me-2"></i>  <%= group.community %></p>
 
                   <% if(group.members_count > 1){ %>
                           <p class="small"><i class="bi bi-person-badge me-2"></i>   <%= group.members_count %>  Members</p>
