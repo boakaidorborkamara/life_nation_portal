@@ -16,10 +16,17 @@ router.post("/login", (req, res, next) => {
     // handle response if there's no user
     if (!user) {
       console.log("no user");
-      return res.json({
+      return res.status(404).json({
         status: "OK",
         code: 1,
         message: "We couldn't find an account with those details.",
+      });
+    } else if (user.password !== req.body.password) {
+      console.log("unmatched password");
+      return res.status(404).json({
+        status: "OK",
+        code: 1,
+        message: "Password is incorrect!",
       });
     }
 
